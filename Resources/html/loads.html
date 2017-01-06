@@ -1,0 +1,42 @@
+﻿<!--login/register loads-->
+<!--this is the email box that gets loaded in-->
+<div id="regEmail" class="form-group input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+    <input class="form-control" type="email" name="Email" placeholder="johndoe@domain.co.uk" required/>
+</div>
+
+<!--this is the full login form that gets loaded in-->
+<div id="account" class="row">
+    <div class="Absolute-Center is-Responsive">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <form action="api/login/login.php" method="post" name="loginForm" id="loginForm">
+                <div class="form-group input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input class="form-control" type="text" name='User_Name' placeholder="username" required/>
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input class="form-control" type="password" name='Password' placeholder="password" required/>
+                </div>
+                <div class="checkbox" id="tacDiv" style="height:0; display:none">
+                    <label>
+                        <input type="checkbox" id="tac" required> I agree to the <a href="#">Terms and Conditions</a>
+                    </label>
+                </div>
+                <div class="checkbox" style="background-color:#FFF">
+                    <label>
+                        <input id="newUser" type="checkbox" name="newUser">I am a new user
+                    </label>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-def btn-block" onclick="preSubmit();"  name="login_reg_but">Login</button>
+                    <div class="g-recaptcha" data-sitekey="6LegnhAUAAAAAPqP5I4qg_4DxpV7tJwl2pAgmTTe" data-callback="onSubmit" data-size="invisible"> </div>
+                </div>
+                <div class="form-group text-center">
+                    <a href="#">Forgot Password</a>&nbsp;|&nbsp;<a href="#">Support</a>
+                    <div id="error"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,116 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>BS1</Name>
+    <ProjectGuid>437b8684-8861-4d2d-a7e2-35abc06b86f2</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>
+    </RootNamespace>
+    <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+    <AssemblyName>BS1</AssemblyName>
+    <SaveServerSettingsInUserFile>false</SaveServerSettingsInUserFile>
+    <Runtime>PHP</Runtime>
+    <RuntimeVersion>7.0</RuntimeVersion>
+    <EnvName>PHPDev</EnvName>
+    <PHPDevHostName>localhost</PHPDevHostName>
+    <PHPDevAutoPort>true</PHPDevAutoPort>
+    <CustomXdebugPort>9001</CustomXdebugPort>
+    <PublishEvent>None</PublishEvent>
+    <DebugMappingMethod>Automatic</DebugMappingMethod>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IncludeDebugInformation>true</IncludeDebugInformation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IncludeDebugInformation>false</IncludeDebugInformation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="api\chara\addXP.php" />
+    <Compile Include="api\chara\buff.php" />
+    <Compile Include="api\chara\get.php" />
+    <Compile Include="api\chara\getItems.php" />
+    <Compile Include="api\chara\getSlot.php" />
+    <Compile Include="api\chara\getStat.php" />
+    <Compile Include="api\chara\list.php" />
+    <Compile Include="api\chara\new.php" />
+    <Compile Include="api\chara\setHealth.php" />
+    <Compile Include="api\chara\setMaxHealth.php" />
+    <Compile Include="api\functions.php" />
+    <Compile Include="api\item\buy.php" />
+    <Compile Include="api\item\deEquip.php" />
+    <Compile Include="api\item\equip.php" />
+    <Compile Include="api\item\get.php" />
+    <Compile Include="api\item\getReq.php" />
+    <Compile Include="api\item\getStat.php" />
+    <Compile Include="api\item\list.php" />
+    <Compile Include="api\login\auth.php" />
+    <Compile Include="api\login\login.php" />
+    <Compile Include="api\pet\list.php" />
+    <Compile Include="api\pet\loyalty.php" />
+    <Compile Include="api\pet\new.php" />
+    <Compile Include="api\reg\prereg.php" />
+    <Compile Include="api\reg\registartion.php" />
+    <Compile Include="api\user\addGold.php" />
+    <Compile Include="api\user\getInfo.php" />
+    <Compile Include="api\user\getItems.php" />
+    <Compile Include="index.php" />
+    <Compile Include="Resources\php\mobile_detect\Mobile_Detect.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\" />
+    <Folder Include="Content\css\" />
+    <Folder Include="api\" />
+    <Folder Include="api\chara\" />
+    <Folder Include="api\item\" />
+    <Folder Include="api\login\" />
+    <Folder Include="api\pet\" />
+    <Folder Include="api\reg\" />
+    <Folder Include="api\user\" />
+    <Folder Include="fonts\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\html\" />
+    <Folder Include="Resources\image\" />
+    <Folder Include="Resources\php\" />
+    <Folder Include="Resources\php\mobile_detect\" />
+    <Folder Include="Scripts\" />
+    <Folder Include="Scripts\js_ajax\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\css\main.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="packages.config" />
+    <Content Include="Resources\html\charaCreLoads.html" />
+    <Content Include="Resources\html\charaList.html" />
+    <Content Include="Resources\html\homeLoads.html" />
+    <Content Include="Resources\html\loads.html" />
+    <Content Include="Resources\image\temp_image.svg" />
+    <Content Include="Resources\php\mobile_detect\composer.json" />
+    <Content Include="Resources\php\mobile_detect\LICENSE.txt" />
+    <Content Include="Resources\php\mobile_detect\Mobile_Detect.json" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\js_ajax\charaCreHelper.js" />
+    <Content Include="Scripts\js_ajax\charListHelper.js" />
+    <Content Include="Scripts\js_ajax\helper.js" />
+    <Content Include="Scripts\js_ajax\loginHelper.js" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <DeleteExistingFiles>True</DeleteExistingFiles>
+    <SkipRemoteFilesCheck>True</SkipRemoteFilesCheck>
+    <publishUrl>home586830776.1and1-data.host</publishUrl>
+    <UserName>u81815466-seank842</UserName>
+    <_SavePWD>True</_SavePWD>
+    <FtpSitePath>
+    </FtpSitePath>
+    <WebPublishMethod>SFTP</WebPublishMethod>
+  </PropertyGroup>
+</Project>
