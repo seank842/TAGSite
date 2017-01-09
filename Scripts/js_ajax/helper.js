@@ -45,7 +45,29 @@ function changeLoc(newLoc){
     $("#mBody").load(newLocPath).hide().prependTo("#mBody").fadin(500);
     currentLoc=newLoc;
 }
+/*
+function loadLogin() {
+    $("#mBody").load("/Resources/html/loads.html #account").hide().prependTo("#mBody").fadeIn(500);
+    $("#mBody").append('<script src="https://www.google.com/recaptcha/api.js"></script>');
+    home = false;
+}
 
+function loadHome() {
+    $("#mBody").load("/Resources/html/homeLoads.html").hide().prependTo("#mBody").fadeIn(500);
+    home = true;
+}
+
+function loadCre(){
+    $("#mBody").load("/Resource/html/charaCreLoads.html").hide().prependTo("#mBody").fadeIn(500);
+    home = false;
+}
+
+function loadList(){
+    $("#mBody").load("/Resource/html/charaList.html").hide().prependTo("#mBody").fadeIn(500);
+    listShow();
+    home = false;
+}
+*/
 function showCre() {
     changeLoc("chaCre");
 }
