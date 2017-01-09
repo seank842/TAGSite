@@ -1,4 +1,4 @@
-﻿var home = true;
+﻿var currentLoc = "account";
 //checks if token is present if not loads in login content
 $(window).on('load', function isLoggedIn() {
     var userToken = localStorage.getItem('userToken');
@@ -23,37 +23,35 @@ $(window).on('load', function isLoggedIn() {
     }
 });
 
-function loadLogin() {
-    $("#mBody").load("/Resources/html/loads.html #account").hide().prependTo("#mBody").fadeIn(500);
-    $("#mBody").append('<script src="https://www.google.com/recaptcha/api.js"></script>');
-    home = false;
-}
-
-function loadHome() {
-    $("#mBody").load("/Resources/html/homeLoads.html").hide().prependTo("#mBody").fadeIn(500);
-    home = true;
-}
-
-function loadCre(){
-    $("#mBody").load("/Resource/html/charaCreLoads.html").hide().prependTo("#mBody").fadeIn(500);
-    home = false;
-}
-
-function loadList(){
-    $("#mBody").load("/Resource/html/charaList.html").hide().prependTo("#mBody").fadeIn(500);
-    listShow();
-    home = false;
+function changeLoc(newLoc){
+    $(currentLoc).remove();
+    var newLocPath;
+    switch(newLoc){
+        case "account":
+            newLocPath = "/Resources/html/loads.html #account";
+            break;
+        case "home":
+            newLocPath = "/Resources/html/homeLoads.html";
+            break;
+        case "chaCre":
+            newLocPath = "/Resource/html/charaCreLoads.html";
+            break;
+        case "chaList":
+            newLocPath = "/Resource/html/charaList.html"
+            break;
+        default:
+            console.error.log("new localtion not defined: "+newLocPath);
+    }
+    $("#mBody").load(newLocPath).hide().prependTo("#mBody").fadin(500);
+    currentLoc=newLoc;
 }
 
 function showCre() {
-    $("#homeMain").remove();
-    loadCre();
+    changeLoc("chaCre");
 }
 
 function showList() {
-    $("#homeMain").remove();
-    $("#charaCre").remove();
-    loadList();
+    changeLoc("chaList");
 }
 
 function logout() {
