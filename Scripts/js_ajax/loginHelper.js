@@ -22,7 +22,9 @@ $(document).on("change", "#newUser", function () {
 });
 
 function preSubmit(){
+    var reg;
     if ($("#newUser").prop('checked')) {
+        reg=true;
         if ($("#tac").prop('checked')) {
             $.ajax({
                 type: "POST",
@@ -33,100 +35,87 @@ function preSubmit(){
                 success: function (data) {
                     if (data) {
                         var results = JSON.parse(data);
-
                         if ($("#newUser").prop('checked')) {
                             if (results.success) {
                                 grecaptcha.execute();
-                            } else {
-                                switch (results.error_code) {
-                                    case 1:
-                                        errorMessageDsp("You are missing something from the form");
-                                        break;
-                                    case 2:
-                                        errorMessageDsp("Someone with tat username already excists");
-                                        break;
-                                    case 3:
-                                        errorMessageDsp("There is a problems with your captcha");
-                                        break;
-                                    default:
-                                        errorMessageDsp("Something has gone very wrong");
-                                }
-
-                            }
+                                onSubmit(reg);
+                            } else
+                                errorHandeler(results.error_code, reg);
                         }
                     }
                 }
-
             });
-        } else {
+        } else
             errorMessageDsp("You must agree to are T&C's");
-        }
     } else {
-        onSubmit();
+        reg=false;
+        onSubmit(reg);
     }
 }
 
-function onSubmit() {
+function onSubmit(reg) {
     $.ajax({
         type: "POST",
         url: pointer,
         data: $("#loginForm").serialize(),
         cache: false,
         processData: false,
-        beforeSend: function () { $('[name = "login_reg_but"]').html('Connecting...'); },
+        beforeSend: function () { $('[name = "login_reg_but"]').html("Connecting..."); },
         success: function (data) {
             if (data) {
                 var results = JSON.parse(data);
                 if ($("#newUser").prop('checked')) {
                     if (results.success) {
                         localStorage.setItem("userToken", results.token);
-                        loadCre();
+                        changeLoc("charaCre");
                     } else {
-                        switch (results.error_code) {
-                            case 1:
-                                errorMessageDsp("You are missing something from the form");
-                                break;
-                            case 2:
-                                errorMessageDsp("Someone with tat username already excists");
-                                break;
-                            case 3:
-                                errorMessageDsp("There is a problems with your captcha");
-                                break;
-                            default:
-                                errorMessageDsp("Something has gone very wrong");
-                        }
+                        errorHandeler(results.error_code, reg);
                     }
-
                 } else {
                     if (results.success) {
                         localStorage.setItem("userToken", results.token);
-                        $("#acount").remove();
-                        loadHome();
+                        changeLoc("home");
                     } else {
-                        switch (results.error_code) {
-                            case 1:
-                                errorMessageDsp("You are missing something from the form");
-                                break;
-                            case 2:
-                                errorMessageDsp("Your username or password is incorrect");
-                                break;
-                            case 3:
-                                errorMessageDsp("There is a problems with your captcha");
-                                break;
-                            default:
-                                errorMessageDsp("Something has gone very wrong");
-                        }
+                        errorHandeler(results.error_code, reg);
                     }
                 }
-            } else {
+            } else
                 errorMessageDsp("Something has gone wrong");
-            }
         }
-
     });
 }
 
 function errorMessageDsp(error){
  	$("#error").html("<span style='color:#cc0000'>Error:</span> "+error+". ");	
 	$('#loginForm').effect( "shake" );
+}
+
+function errorHandeler(errorCode, reg){
+    switch (errorCode) {
+        case 1:
+            changeButtDis(reg);
+            errorMessageDsp("You are missing something from the form");
+            break;
+        case 2:
+            changeButtDis(reg);
+            if(reg)
+                errorMessageDsp("Someone with that username already exists");
+            else
+                errorMessageDsp("Your username or password is incorrect");
+            break;
+        case 3:
+            changeButtDis(reg);
+            errorMessageDsp("There is a problems with your captcha");
+            break;
+        default:
+            changeButtDis(reg);
+            errorMessageDsp("Something has gone very wrong");
+    }
+}
+
+function changeButtDis(reg){
+    if(reg)
+        $('[name = "login_reg_but"]').html("Register");
+    else
+        $('[name = "login_reg_but"]').html("Login");
 }

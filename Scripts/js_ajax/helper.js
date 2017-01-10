@@ -1,9 +1,9 @@
-﻿var currentLoc = "account";
+﻿var currentLoc;
 //checks if token is present if not loads in login content
 $(window).on('load', function isLoggedIn() {
     var userToken = localStorage.getItem('userToken');
     if (userToken == null) {
-        loadLogin();
+        changeLoc("account");
     } else {
         var postD = { Token: userToken };
         $.ajax({
@@ -15,9 +15,11 @@ $(window).on('load', function isLoggedIn() {
             success: function (data) {
                 var results = JSON.parse(data);
                 if (results.success)
-                    loadHome();
-                else
-                    loadHome();
+                    changeLoc("home");
+                else{
+                    localStorage.clear();
+                    changeLoc("account");
+                }
             }
         });
     }
@@ -33,15 +35,16 @@ function changeLoc(newLoc){
         case "home":
             newLocPath = "/Resources/html/homeLoads.html";
             break;
-        case "chaCre":
+        case "charaCre":
             newLocPath = "/Resource/html/charaCreLoads.html";
             break;
-        case "chaList":
+        case "charaList":
             newLocPath = "/Resource/html/charaList.html"
             break;
         default:
             console.error.log("new localtion not defined: "+newLocPath);
     }
+    $("#"+currentLoc).remove();
     $("#mBody").load(newLocPath).hide().prependTo("#mBody").fadin(500);
     currentLoc=newLoc;
 }
@@ -69,29 +72,28 @@ function loadList(){
 }
 */
 function showCre() {
-    changeLoc("chaCre");
+    changeLoc("charaCre");
 }
 
 function showList() {
-    changeLoc("chaList");
+    changeLoc("charaList");
 }
 
 function logout() {
     localStorage.clear();
     console.log("logged out");
-    loadLogin();
+    changeLoc("account");
 }
 
 history.pushState(null, null, document.URL);
 window.addEventListener('popstate', function () {
-    if (home) {
-
+    if (currentLoc=="home") {
+        return 0;
     } else {
         history.pushState(null, null, document.URL);
-        $("#homeMain").remove();
+        $("#home").remove();
         $("#charaCre").remove();
         $("#charaList").remove();
         loadHome();
     }
-    
 });
