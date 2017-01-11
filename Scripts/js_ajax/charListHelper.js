@@ -25,7 +25,7 @@ function listShow() {
         }
     });
 }
-	
+/*
 function checkClick(){
 	$('.chara').on("click",function(){
 		var char=$(this);
@@ -53,5 +53,24 @@ function checkClick(){
 			}
 		});
 		} else {statList.animate({height: 0,opacity: 0}, 200,function(){statList.css('display', 'none')});}
+	});
+}*/
+
+function checkClick(){
+	$(".chara").on("click", function(){
+		var char=$(this);
+		var statList=char.children(".stats");
+		if(statList.height()==0){
+			statList.html("");
+			$.each(getCharStats(char).starts.stat, function(index, value){
+				statList.append("<div>"+value.Name+":"+value.Value+"</div>");
+			});
+			statList.css('display', 'block');
+    		curHeight = 0;
+   			autoHeight = statList.css('height', 'auto').height();
+			statList.height(curHeight).animate({height: autoHeight,opacity: 100}, 200);
+		}
+		else
+			statList.height({height:0, opacity:0}, 200, function(){statList.css("display", "none")});
 	});
 }
