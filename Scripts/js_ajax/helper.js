@@ -108,9 +108,10 @@ function getCharStats(char){
     	cache: false,
     	success: function (data) {
 		 	var results = JSON.parse(data);
-            if(results.success){
-
-            }
+            if(results.success)
+                return results;
+            else
+                console.log("error getting stats");
         }
     });
 }
