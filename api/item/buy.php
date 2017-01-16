@@ -17,12 +17,13 @@ if(missingOperand($operand,$_POST)){
 		
 	} else
 	{
-		$query="SELECT Money
+		$query="SELECT *
 		FROM tbl_user
 		WHERE UserID = $userID;";
 		$result=mysqli_query($link, $query) or die (mysqli_error($link));
 		$results=mysqli_fetch_array($result);
 		$balence=$results['Money'];
+		$noOfSlots=$results['BagItems'];
 		
 		$query="SELECT Value
 		FROM tbl_item
@@ -30,6 +31,12 @@ if(missingOperand($operand,$_POST)){
 		$result=mysqli_query($link, $query) or die (mysqli_error($link));
 		$results=mysqli_fetch_array($result);
 		$cost=$results['Value'];
+
+		$query="SELECT *
+		FROM tbl_ownership
+		WHERE UserID = $userID;";
+		$result=mysqli_query($link, $query) or die (mysqli_error($link));
+		$noOfItems=mysqli_num_rows($result);
 		
 		$query="SELECT *
 		FROM tbl_ownership
@@ -39,15 +46,20 @@ if(missingOperand($operand,$_POST)){
 			$errorCode=3;
 			$success=false;
 		} else if($cost<=$balence){
+
+			if($noOfItems<$noOfSlots){
+				$query="UPDATE tbl_user
+				SET Money = Money - $cost WHERE `UserID` = $userID;";
+				mysqli_query($link,$query) or die (mysqli_error($link));
 		
-			$query="UPDATE tbl_user
-			SET Money = Money - $cost WHERE `UserID` = $userID;";
-			mysqli_query($link,$query) or die (mysqli_error($link));
+				$query="INSERT INTO tbl_ownership
+				(ItemID, UserID) VALUES($itemID,$userID)";
 		
-			$query="INSERT INTO tbl_ownership
-			(ItemID, UserID) VALUES($itemID,$userID)";
-		
-			mysqli_query($link,$query) or die (mysqli_error($link));
+				mysqli_query($link,$query) or die (mysqli_error($link));
+			} else{
+				$errorCode=4;
+				$success=false;
+			}
 		} else {
 			$errorCode=2;
 			$success=false;	
