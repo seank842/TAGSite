@@ -97,3 +97,21 @@ window.addEventListener('popstate', function () {
         loadHome();
     }
 });
+
+function getCharStats(char){
+    var charaID=char.data("charid");
+    var postData={charID:charaID};
+    $.ajax({
+        type: "POST",
+        url: '/api/chara/getStat.php',
+    	data: postData,
+    	cache: false,
+    	success: function (data) {
+		 	var results = JSON.parse(data);
+            if(results.success)
+                return results;
+            else
+                console.log("error getting stats");
+        }
+    });
+}
