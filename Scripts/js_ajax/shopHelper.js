@@ -26,6 +26,7 @@ function itemListShow() {
 function itemCheckClick(){
 	$('.item').on("click",function(){
 		var char=$(this);
+		
 		var statList = char.children(".itemChara");
 		if(statList.height()==0){
 		var charaID=char.data("charid");
@@ -37,6 +38,7 @@ function itemCheckClick(){
         	cache: false,
         	success: function (data) {
 			 	var results = JSON.parse(data);
+				 console.log(data); 
                 if (results.success){
 					statList.html("");
 					$.each(results.Starts.stat, function( index, value ){
