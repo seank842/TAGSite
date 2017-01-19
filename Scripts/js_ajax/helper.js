@@ -39,6 +39,7 @@ function setUsername(){
             url: "api/user/getInfo.php",
             data: postD,
             cache: false,
+			processData: true,
             success: function (data) {
                 var results = JSON.parse(data);
                 if (results.success){
@@ -53,13 +54,14 @@ function setUsername(){
 }
 
 function changeLoc(newLoc){
+	userToken = localStorage.getItem('userToken');
     $(currentLoc).remove();
     var newLocPath;
     switch(newLoc){
         case "account":
             newLocPath = "/Resources/html/loads.html #account";
 			barID="preLogin";
-			flipMain(newLocPath,barID);
+			flipMain(newLocPath,barID,function(){$("#mBody").append("<script src='https://www.google.com/recaptcha/api.js'></script>");});
             break;
         case "home":
             newLocPath = "/Resources/html/homeLoads.html";
@@ -67,14 +69,19 @@ function changeLoc(newLoc){
 			flipMain(newLocPath,barID,function(){setUsername();});
             break;
         case "charaCre":
-            newLocPath = "/Resource/html/charaCreLoads.html";
+            newLocPath = "/Resources/html/charaCreLoads.html";
 			barID="main";
 			flipMain(newLocPath,barID,function(){setUsername();});
             break;
         case "charaList":
-            newLocPath = "/Resource/html/charaList.html"
+            newLocPath = "/Resources/html/charaList.html"
 			barID="main";
 			flipMain(newLocPath,barID,function(){charListShow(); setUsername();});
+            break;
+		 case "shop":
+            newLocPath = "/Resources/html/shop.html"
+			barID="main";
+			flipMain(newLocPath,barID,function(){itemListShow(); setUsername();});
             break;
         default:
             console.error.log("new localtion not defined: "+newLocPath);
@@ -84,10 +91,11 @@ function changeLoc(newLoc){
 function flipMain(path,barID,callback){
 	 $("#mBody").fadeOut(500,function(){
 		$("#"+currentLoc).remove();
-		$(".navbar").load("/Resource/html/narBar.html #"+barID,function(){
+		$(".navbar").load("/Resources/html/narBar.html #"+barID,function(){
     		$("#mBody").load(path,function(){
                 currentLoc=newLoc;
 		        if(callback != undefined){
+					console.log("calback");
 		            callback();
 		        }
             }).fadeIn(500);
@@ -99,6 +107,10 @@ function flipMain(path,barID,callback){
 
 function showCre() {
     changeLoc("charaCre");
+}
+
+function showShop() {
+    changeLoc("shop");
 }
 
 function showList() {

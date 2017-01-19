@@ -38,7 +38,7 @@ function preSubmit(){
                         if ($("#newUser").prop('checked')) {
                             if (results.success) {
                                 grecaptcha.execute();
-                                onSubmit(reg);
+                                //onSubmit(reg);
                             } else
                                 errorHandeler(results.error_code, reg);
                         }
@@ -66,7 +66,7 @@ function onSubmit(reg) {
                 var results = JSON.parse(data);
                 if ($("#newUser").prop('checked')) {
                     if (results.success) {
-                        localStorage.setItem("userToken", results.token);
+                        localStorage.setItem("userToken", results.Token);
                         changeLoc("charaCre");
                     } else {
                         errorHandeler(results.error_code, reg);

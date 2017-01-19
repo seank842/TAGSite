@@ -21,6 +21,9 @@
 <script src="Scripts/jquery-ui.js"></script>
 <script src="Scripts/js_ajax/charaCreHelper.js"></script>
 <script src="/Scripts/js_ajax/charListHelper.js"></script>
+<script src="/Scripts/js_ajax/shopHelper.js"></script>
+
+
 
 <!--Load in gsap base-->
 <!--

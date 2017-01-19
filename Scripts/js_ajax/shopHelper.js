@@ -1,24 +1,20 @@
-function listShow() {
+function itemListShow() {
     var postData = { Token: localStorage.getItem('userToken') };
     $.ajax({
         type: "POST",
-        url: '/api/chara/list.php',
+        url: '/api/item/list.php',
         data: postData,
         cache: false,
         success: function (data) {
             var results = JSON.parse(data);
             if (results.success) {
-                $.each(results.char.char, function (index, value) {
-                    if (value.Pet == 0)
-                        image = "charTemp";
-                    else
-                        image = "petTemp"
-
-                    $("#charaList").append("<div class='chara'  data-charid='" + value.CharacterID + "'><img class='charaImage' align='middle' src='/Resorces/img/" + image +
-                        ".jpg'>Name:" + value.Name + "	Health:" + value.CurrentHealth + "/" + value.MaxHealth
-                        + "<div class='stats'></div></div>");
+                $.each(results.items.item, function (index, value) {
+					console.log(value);
+                    $("#shop").append("<div class='item'  data-charid='" + value.ItemID + "'><img class='charaImage' align='middle' src='/Resources/image/items/" + value.ImageURL +
+                        "'>Name:" + value.ItemName + "	Value:" + value.Value + " Type:" + value.TypeName+ " Slot:" + value.SlotName
+                        + "<div class='itemChara'></div></div>");
                 });
-                checkClick();
+                 itemCheckClick();
             }
             else
                 loadLogin();
@@ -27,21 +23,32 @@ function listShow() {
 }
 
 
-function checkClick(){
-	$(".chara").on("click", function(){
+function itemCheckClick(){
+	$('.item').on("click",function(){
 		var char=$(this);
-		var statList=char.children(".stats");
+		var statList = char.children(".itemChara");
 		if(statList.height()==0){
-			statList.html("");
-			$.each(getCharStats(char).starts.stat, function(index, value){
-				statList.append("<div>"+value.Name+":"+value.Value+"</div>");
-			});
-			statList.css('display', 'block');
-    		curHeight = 0;
-   			autoHeight = statList.css('height', 'auto').height();
-			statList.height(curHeight).animate({height: autoHeight,opacity: 100}, 200);
-		}
-		else
-			statList.height({height:0, opacity:0}, 200, function(){statList.css("display", "none")});
+		var charaID=char.data("charid");
+		var postData={ItemID:charaID};
+	 	$.ajax({
+       	 	type: "POST",
+        	url: '/api/item/getStat.php',
+        	data: postData,
+        	cache: false,
+        	success: function (data) {
+			 	var results = JSON.parse(data);
+                if (results.success){
+					statList.html("");
+					$.each(results.Starts.stat, function( index, value ){
+							statList.append("<div>"+value.Name +":"+ value.Value+"</div>");
+					});
+					statList.css('display', 'block');
+    				curHeight = 0;
+   					autoHeight = statList.css('height', 'auto').height();
+					statList.height(curHeight).animate({height: autoHeight,opacity: 100}, 200);
+				}
+			}
+		});
+		} else {statList.animate({height: 0,opacity: 0}, 200,function(){statList.css('display', 'none')});}
 	});
 }

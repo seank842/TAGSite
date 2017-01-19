@@ -36,6 +36,12 @@ if(missingOperand($operand,$_POST)){
 			$now = time();
 			$query="INSERT INTO tbl_user (UserName,Email,Password,Salt,DateJoined) VALUES ('$uname','$email','$password','$salt',$now)";
 			mysqli_query($link, $query) or die (mysqli_error($link));
+			
+			$userID=mysqli_insert_id ($link);
+			$token=generateRandomString(20);
+			$expTime=strtotime('+24 week');
+			$query="INSERT INTO tbl_token (UserID,Token,ExpiryTime) VALUES ('$userID','$token','$expTime')";
+			mysqli_query($link, $query);
 		}
 	}
 }else {
@@ -43,7 +49,10 @@ if(missingOperand($operand,$_POST)){
 	$success=false;
 }
 
-$reultrs = array("success"=>$success, "error_code" => $errorCode);
+
+if($success){
+	$reultrs = array("success"=>$success, "Token"=>$token);
+}else{$reultrs = array("success"=>$success,"error_code" => $errorCode);}
 echo json_encode($reultrs);
 
 ?>

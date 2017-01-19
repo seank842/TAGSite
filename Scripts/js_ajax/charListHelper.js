@@ -1,12 +1,15 @@
 function charListShow() {
+	console.log("CharList Show");
     var postData = { Token: localStorage.getItem('userToken') };
     $.ajax({
         type: "POST",
         url: '/api/chara/list.php',
         data: postData,
         cache: false,
+		processData:true,
         success: function (data) {
             var results = JSON.parse(data);
+			console.log(data);
             if (results.success) {
                 $.each(results.char.char, function (index, value) {
                     if (value.Pet == 0)
@@ -14,11 +17,11 @@ function charListShow() {
                     else
                         image = "petTemp"
 
-                    $("#charaList").append("<div class='chara'  data-charid='" + value.CharacterID + "'><img class='charaImage' align='middle' src='/Resorces/img/" + image +
+                    $("#charaList").append("<div class='chara'  data-charid='" + value.CharacterID + "'><img class='charaImage' align='middle' src='/Resources/image/" + image +
                         ".jpg'>Name:" + value.Name + "	Health:" + value.CurrentHealth + "/" + value.MaxHealth
-                        + "<div class='stats'></div></div>");
+                        + "<div class='charChara'></div></div>");
                 });
-                checkClick();
+               charCheckClick();
             }
             else
                 loadLogin();
@@ -26,10 +29,10 @@ function charListShow() {
     });
 }
 
-function checkClick(){
+function charCheckClick(){
 	$('.chara').on("click",function(){
 		var char=$(this);
-		var statList = char.children(".stats");
+		var statList = char.children(".charChara");
 		if(statList.height()==0){
 		var charaID=char.data("charid");
 		var postData={CharID:charaID};
