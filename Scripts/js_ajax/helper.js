@@ -1,7 +1,12 @@
 ﻿var currentLoc;
+var newLoc;
+var userToken = localStorage.getItem('userToken');
 //checks if token is present if not loads in login content
-$(window).on('load', function isLoggedIn() {
-    var userToken = localStorage.getItem('userToken');
+$(window).on('load', function () {
+    isLoggedIn();
+});
+
+function isLoggedIn() {
     if (userToken == null) {
         changeLoc("account");
     } else {
@@ -11,11 +16,13 @@ $(window).on('load', function isLoggedIn() {
             url: "api/login/auth.php",
             data: postD,
             cache: false,
-            processData: false,
+            processData: true,
             success: function (data) {
                 var results = JSON.parse(data);
-                if (results.success)
+                if (results.success){
                     changeLoc("home");
+					console.log(data);
+				}
                 else{
                     localStorage.clear();
                     changeLoc("account");
@@ -23,7 +30,27 @@ $(window).on('load', function isLoggedIn() {
             }
         });
     }
+}
+
+function setUsername(){
+ var postD = { Token: userToken };
+        $.ajax({
+            type: "POST",
+            url: "api/user/getInfo.php",
+            data: postD,
+            cache: false,
+            success: function (data) {
+                var results = JSON.parse(data);
+                if (results.success){
+                    $("#userName").html(results.Users.UserName);   
+                   }
+                else{
+                  
+                    //changeLoc("account");
+                }
+            }
 });
+}
 
 function changeLoc(newLoc){
     $(currentLoc).remove();
@@ -31,46 +58,45 @@ function changeLoc(newLoc){
     switch(newLoc){
         case "account":
             newLocPath = "/Resources/html/loads.html #account";
+			barID="preLogin";
+			flipMain(newLocPath,barID);
             break;
         case "home":
             newLocPath = "/Resources/html/homeLoads.html";
+			barID="main";
+			flipMain(newLocPath,barID,function(){setUsername();});
             break;
         case "charaCre":
             newLocPath = "/Resource/html/charaCreLoads.html";
+			barID="main";
+			flipMain(newLocPath,barID,function(){setUsername();});
             break;
         case "charaList":
             newLocPath = "/Resource/html/charaList.html"
+			barID="main";
+			flipMain(newLocPath,barID,function(){charListShow(); setUsername();});
             break;
         default:
             console.error.log("new localtion not defined: "+newLocPath);
     }
-    $("#"+currentLoc).remove();
-    $("#mBody").load(newLocPath).hide().prependTo("#mBody").fadin(500);
-    currentLoc=newLoc;
-}
-/*
-function loadLogin() {
-    $("#mBody").load("/Resources/html/loads.html #account").hide().prependTo("#mBody").fadeIn(500);
-    $("#mBody").append('<script src="https://www.google.com/recaptcha/api.js"></script>');
-    home = false;
 }
 
-function loadHome() {
-    $("#mBody").load("/Resources/html/homeLoads.html").hide().prependTo("#mBody").fadeIn(500);
-    home = true;
+function flipMain(path,barID,callback){
+	 $("#mBody").fadeOut(500,function(){
+		$("#"+currentLoc).remove();
+		$(".navbar").load("/Resource/html/narBar.html #"+barID,function(){
+    		$("#mBody").load(path,function(){
+                currentLoc=newLoc;
+		        if(callback != undefined){
+		            callback();
+		        }
+            }).fadeIn(500);
+        });
+	});	
+	
 }
 
-function loadCre(){
-    $("#mBody").load("/Resource/html/charaCreLoads.html").hide().prependTo("#mBody").fadeIn(500);
-    home = false;
-}
 
-function loadList(){
-    $("#mBody").load("/Resource/html/charaList.html").hide().prependTo("#mBody").fadeIn(500);
-    listShow();
-    home = false;
-}
-*/
 function showCre() {
     changeLoc("charaCre");
 }
@@ -94,7 +120,7 @@ window.addEventListener('popstate', function () {
         $("#home").remove();
         $("#charaCre").remove();
         $("#charaList").remove();
-        loadHome();
+       isLoggedIn();
     }
 });
 
@@ -115,3 +141,4 @@ function getCharStats(char){
         }
     });
 }
+
