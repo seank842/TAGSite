@@ -25,7 +25,7 @@ function listShow() {
         }
     });
 }
-/*
+
 function checkClick(){
 	$('.chara').on("click",function(){
 		var char=$(this);
@@ -54,8 +54,9 @@ function checkClick(){
 		});
 		} else {statList.animate({height: 0,opacity: 0}, 200,function(){statList.css('display', 'none')});}
 	});
-}*/
+}
 
+/*
 function checkClick(){
 	$(".chara").on("click", function(){
 		var char=$(this);
@@ -73,4 +74,4 @@ function checkClick(){
 		else
 			statList.height({height:0, opacity:0}, 200, function(){statList.css("display", "none")});
 	});
-}
+}*/
