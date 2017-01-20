@@ -125,7 +125,7 @@ function createItemSlot() {
     function onRelease() {
         this.hitTest($list, 0) ? layoutInvalidated : changePostion(item.index, item.lastIndex);
 
-        TweenLite.to(element, 0.2{
+        TweenLite.to(element, 0.2,{
             autoAlpha: 1,
             boxShadow: shadow1,
             scale: 1,
