@@ -22,6 +22,7 @@
 <script src="Scripts/js_ajax/charaCreHelper.js"></script>
 <script src="Scripts/js_ajax/charListHelper.js"></script>
 <script src="Scripts/js_ajax/shopHelper.js"></script>
+<script src="Scripts/js_ajax/itemGrid.js"></script>
 
 <!--Load in gsap base-->
     <script src="https://selene.hud.ac.uk/js/gsap/TweenMax.min.js"></script>
