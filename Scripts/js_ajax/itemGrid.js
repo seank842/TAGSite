@@ -1,12 +1,12 @@
 ﻿var rowSize = 100,
     colSize = 100,
     spacerSize = 7,
-    numItems,
+    numItems = 25,
     fixedSize = true,
     threshold = "50%",
     $list = $("list"),
     //Live node list of items
-    items = $list[0].getElementsByClassName("item"),
+    //items = $list[0].getElementsByClassName("item"),
     label = 1,
     zIndex = 1000,
     width = "100%",
@@ -17,7 +17,7 @@
     spacerStep = null,
     shadow1 = "0 1px 3px  0 rgba(0, 0, 0, 0.5), 0 1px 2px 0 rgba(0, 0, 0, 0.6)",
     shadow2 = "0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 2px 2px 0 rgba(0, 0, 0, 0.2)";
-
+var items = $list[0].getElementsByClassName("item");
 $(window).resize(resize);
 
 $(".item").remove();
@@ -49,7 +49,7 @@ function changePostion(from, to, rowToUpdate) {
 }
 
 function createItemSlot() {
-    var colspan = Math.floor(math.random() * 2) + 1,
+    var colspan = Math.floor(Math.random() * 2) + 1,
         element = $("<div></div>").addClass("item").html(label++),
         lastX = 0;
 
