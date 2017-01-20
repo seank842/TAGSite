@@ -10,7 +10,17 @@
         cache: false,
         beforeSend: function () { $('[name = "cre_but"]').html('Connecting...'); },
         success: function (data) {
-            showList();
+            $('[name = "cre_but"]').html('Create');
+            var results = JSON.parse(data);
+				 console.log(results); 
+                if (results.success){
+                    $("#xpVal").html(results.Stats.xp);
+                    $("#strVal").html(results.Stats.str);
+                    $("#agiVal").html(results.Stats.agi);
+                    $("#stamVal").html(results.Stats.sta);
+                    $("#magVal").html(results.Stats.mag);
+                }
+            //showList();
         }
     });
 }

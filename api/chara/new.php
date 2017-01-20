@@ -67,7 +67,7 @@ if(missingOperand($operand,$_POST)){
 
 if($success){
 	
-	$stats=array(1=>0,2=>$strength,3=>$agility,4=>$stamina,5=>$magic);
+	$stats=array("xp"=>0,"str"=>$strength,"agi"=>$agility,"sta"=>$stamina,"mag"=>$magic);
 	$reultrs = array("success"=>$success,"CharID"=> $cID,"CharName"=>$data['CharName'],"Stats"=>$stats);
 }else
 {

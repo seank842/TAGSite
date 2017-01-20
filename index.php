@@ -34,7 +34,7 @@
 </head>
 <body>
 <div class="navbar" style="background-color: white !important; border-radius:0px"> </div>
-<div id="mBody" class="container-fluid"> 
+<div id="mBody" class="container"> 
   <!--Content will be dynamically loaded here--> 
   
 </div>
