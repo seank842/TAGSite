@@ -54,7 +54,6 @@
     <Compile Include="api\user\getInfo.php" />
     <Compile Include="api\user\getItems.php" />
     <Compile Include="index.php" />
-    <Compile Include="Resources\php\mobile_detect\Mobile_Detect.php" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
@@ -70,8 +69,7 @@
     <Folder Include="Resources\" />
     <Folder Include="Resources\html\" />
     <Folder Include="Resources\image\" />
-    <Folder Include="Resources\php\" />
-    <Folder Include="Resources\php\mobile_detect\" />
+    <Folder Include="Resources\image\items\" />
     <Folder Include="Scripts\" />
     <Folder Include="Scripts\js_ajax\" />
   </ItemGroup>
@@ -94,11 +92,18 @@
     <Content Include="Resources\html\charaCreLoads.html" />
     <Content Include="Resources\html\charaList.html" />
     <Content Include="Resources\html\homeLoads.html" />
+    <Content Include="Resources\html\inventoryList.html" />
     <Content Include="Resources\html\loads.html" />
+    <Content Include="Resources\html\navBar.html" />
+    <Content Include="Resources\html\shop.html" />
+    <Content Include="Resources\image\charTemp.jpg" />
+    <Content Include="Resources\image\items\bow.png" />
+    <Content Include="Resources\image\items\chest.jpg" />
+    <Content Include="Resources\image\items\dagger.jpg" />
+    <Content Include="Resources\image\items\fire.jpg" />
+    <Content Include="Resources\image\logo.png" />
+    <Content Include="Resources\image\petTemp.jpg" />
     <Content Include="Resources\image\temp_image.svg" />
-    <Content Include="Resources\php\mobile_detect\composer.json" />
-    <Content Include="Resources\php\mobile_detect\LICENSE.txt" />
-    <Content Include="Resources\php\mobile_detect\Mobile_Detect.json" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.1.intellisense.js" />
@@ -111,6 +116,7 @@
     <Content Include="Scripts\js_ajax\charaCreHelper.js" />
     <Content Include="Scripts\js_ajax\charListHelper.js" />
     <Content Include="Scripts\js_ajax\helper.js" />
+    <Content Include="Scripts\js_ajax\itemGrid.js" />
     <Content Include="Scripts\js_ajax\loginHelper.js" />
   </ItemGroup>
 </Project>
