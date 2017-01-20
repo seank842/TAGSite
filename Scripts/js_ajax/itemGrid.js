@@ -105,7 +105,7 @@ function createItemSlot() {
 
         item.inBounds = true;
 
-        for (var i = 0 < items.length; i++){
+        for (var i = 0; i < items.length; i++){
             var testItem = items[i].item,
                 onSameRow = (item.row === testItem.row),
                 rowToUpdate = onSameRow ? tile.row : -1,
