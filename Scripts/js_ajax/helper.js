@@ -61,47 +61,52 @@ function changeLoc(newLoc){
         case "account":
             newLocPath = "/Resources/html/loads.html #account";
 			barID="preLogin";
-			flipMain(newLocPath,barID,function(){$("#mBody").append("<script src='https://www.google.com/recaptcha/api.js'></script>");});
+            flipMain(newLocPath, barID, function () { $("#mBody").append("<script src='https://www.google.com/recaptcha/api.js'></script>"); });
             break;
         case "home":
             newLocPath = "/Resources/html/homeLoads.html";
 			barID="main";
-			flipMain(newLocPath,barID,function(){setUsername();});
+            flipMain(newLocPath, barID, function () { setUsername(); });
             break;
         case "charaCre":
             newLocPath = "/Resources/html/charaCreLoads.html";
 			barID="main";
-			flipMain(newLocPath,barID,function(){setUsername();});
+            flipMain(newLocPath, barID, function () { setUsername(); });
             break;
         case "charaList":
-            newLocPath = "/Resources/html/charaList.html"
+            newLocPath = "/Resources/html/charaList.html";
 			barID="main";
-			flipMain(newLocPath,barID,function(){charListShow(); setUsername();});
+            flipMain(newLocPath, barID, function () { charListShow(); setUsername(); });
             break;
 		 case "shop":
-            newLocPath = "/Resources/html/shop.html"
+            newLocPath = "/Resources/html/shop.html";
 			barID="main";
-			flipMain(newLocPath,barID,function(){itemListShow(); setUsername();});
+            flipMain(newLocPath, barID, function () { itemListShow(); setUsername(); });
+            break;
+         case "invent":
+            newLocPath = "/Resources/html/inventoryList.html";
+            barID = "main";
+            flipMain(newLocPath, barID, function () { populateBoard(); setUsername(); });
             break;
         default:
             console.error.log("new localtion not defined: "+newLocPath);
     }
 }
 
-function flipMain(path,barID,callback){
-	 $("#mBody").fadeOut(500,function(){
-		$("#"+currentLoc).remove();
-		$(".navbar").load("/Resources/html/narBar.html #"+barID,function(){
-    		$("#mBody").load(path,function(){
-                currentLoc=newLoc;
-		        if(callback != undefined){
-					console.log("calback");
-		            callback();
-		        }
+function flipMain(path, barID, callback) {
+    $("#mBody").fadeOut(500, function () {
+        $("#" + currentLoc).remove();
+        $(".navbar").load("/Resources/html/narBar.html #" + barID, function () {
+            $("#mBody").load(path, function () {
+                currentLoc = newLoc;
+                if (callback != undefined) {
+                    console.log("calback");
+                    callback();
+                }
             }).fadeIn(500);
         });
-	});	
-	
+    });
+
 }
 
 
@@ -115,6 +120,10 @@ function showShop() {
 
 function showList() {
     changeLoc("charaList");
+}
+
+function showInvent() {
+    changeLoc("invent");
 }
 
 function logout() {
