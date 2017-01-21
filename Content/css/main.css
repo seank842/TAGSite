@@ -67,3 +67,6 @@ label:hover{
     color: #efefef;
 }
 
+.navbar-brand{
+    cursor:pointer;
+}
