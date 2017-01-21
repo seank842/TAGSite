@@ -104,7 +104,6 @@ function flipMain(path, barID, callback) {
     $("#mBody").fadeOut(500, function () {
         $("#" + currentLoc).remove();
         if (!$("#main").length || path == "/Resources/html/loads.html #account") {
-            console.log("is not present");
             $(".navbar").load("/Resources/html/narBar.html #" + barID, function () {
                 $("#mBody").load(path, function () {
                     currentLoc = newLoc;
@@ -115,7 +114,6 @@ function flipMain(path, barID, callback) {
                 }).fadeIn(500);
             });
         } else {
-            console.log("is present");
             $("#mBody").load(path, function () {
                 currentLoc = newLoc;
                 if (callback != undefined) {
