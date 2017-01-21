@@ -1,6 +1,6 @@
 ﻿var rowSize = 100,
     colSize = 100,
-    spacerSize = 7,
+    spacerSize = 15,
     numItems = 25,
     fixedSize = true,
     oneColumn = false,
@@ -10,7 +10,7 @@
     items = $list[0].getElementsByClassName("item"),
     label = 1,
     zIndex = 1000,
-    width = "100%",
+    startWidth = "100%",
     startSize = colSize,
     singleWidth = colSize * 3,
     colCount = null,
@@ -24,7 +24,16 @@ $(window).resize(resize);
 init();
 
 function init() {
-    
+
+    var width = startWidth;
+
+    // This value is defined when this function 
+    // is fired by a radio button change event
+
+    fixedSize = true;
+    colSize = startSize;
+
+
     $(".item").remove();
 
     TweenLite.to($list, 0.2, { width: width });
@@ -36,11 +45,13 @@ function init() {
         resize();
 
         for (var i = 0; i < numItems; i++) {
-            createItemSlot();
+            createItem();
         }
     }
 }
+
 function resize() {
+
     colCount = oneColumn ? 1 : Math.floor($list.outerWidth() / (colSize + spacerSize));
     spacerStep = colCount == 1 ? spacerSize : (spacerSize * (colCount - 1) / colCount);
     rowCount = 0;
@@ -49,17 +60,20 @@ function resize() {
 }
 
 function changePosition(from, to, rowToUpdate) {
-    var $items = $(".item"),
-        insert = from > to ? "insertBefore" : "insertAfter";
 
+    var $items = $(".item");
+    var insert = from > to ? "insertBefore" : "insertAfter";
+
+    // Change DOM positions
     $items.eq(from)[insert]($items.eq(to));
 
     layoutInvalidated(rowToUpdate);
 }
 
-function createItemSlot() {
-    var colspan = Math.floor(Math.random() * 2) + 1,
-        element = $("<div></div>").addClass("item").html(label++),
+function createItem() {
+
+    var colspan = fixedSize || oneColumn ? 1 : Math.floor(Math.random() * 2) + 1,
+        element = $("<div></div>").addClass("item").attr('id', label++),
         lastX = 0;
 
     Draggable.create(element, {
@@ -93,6 +107,7 @@ function createItemSlot() {
     layoutInvalidated();
 
     function onPress() {
+
         lastX = this.x;
         item.isDragging = true;
         item.lastIndex = item.index;
@@ -106,6 +121,8 @@ function createItemSlot() {
     }
 
     function onDrag() {
+
+        // Move to end of list if not in bounds
         if (!this.hitTest($list, 0)) {
             item.inBounds = false;
             changePosition(item.index, items.length - 1);
@@ -114,13 +131,17 @@ function createItemSlot() {
 
         item.inBounds = true;
 
-        for (var i = 0; i < items.length; i++){
-            var testItem = items[i].item,
-                onSameRow = (item.row === testItem.row),
-                rowToUpdate = onSameRow ? item.row : -1,
-                shiftLeft = onSameRow ? (this.x < lastX && item.index > i) : true,
-                shiftRight = onSameRow ? (this.x > lastX && item.index < i) : true,
-                validMove = (testItem.positioned && (shiftLeft || shiftRight));
+        for (var i = 0; i < items.length; i++) {
+
+            // Row to update is used for a partial layout update
+            // Shift left/right checks if the item is being dragged 
+            // towards the the item it is testing
+            var testItem = items[i].item;
+            var onSameRow = (item.row === testItem.row);
+            var rowToUpdate = onSameRow ? item.row : -1;
+            var shiftLeft = onSameRow ? (this.x < lastX && item.index > i) : true;
+            var shiftRight = onSameRow ? (this.x > lastX && item.index < i) : true;
+            var validMove = (testItem.positioned && (shiftLeft || shiftRight));
 
             if (this.hitTest(items[i], threshold) && validMove) {
                 changePosition(item.index, i, rowToUpdate);
@@ -132,14 +153,16 @@ function createItemSlot() {
     }
 
     function onRelease() {
-        this.hitTest($list, 0) ? layoutInvalidated : changePosition(item.index, item.lastIndex);
 
-        TweenLite.to(element, 0.2,{
+        // Move item back to last position if released out of bounds
+        this.hitTest($list, 0) ? layoutInvalidated() : changePosition(item.index, item.lastIndex);
+
+        TweenLite.to(element, 0.2, {
             autoAlpha: 1,
             boxShadow: shadow1,
             scale: 1,
-            x: this.x,
-            y: this.y,
+            x: item.x,
+            y: item.y,
             zIndex: ++zIndex
         });
 
@@ -148,47 +171,61 @@ function createItemSlot() {
 }
 
 function layoutInvalidated(rowToUpdate) {
-    var timeline = new TimelineMax(),
-        partialLayout = (rowToUpdate > -1);
 
-    var height = 0,
-        col = 0,
-        row = 0,
-        time = 0.35;
+    var timeline = new TimelineMax();
+    var partialLayout = (rowToUpdate > -1);
+
+    var height = 0;
+    var col = 0;
+    var row = 0;
+    var time = 0.35;
 
     $(".item").each(function (index, element) {
-        var item = this.item,
-            oldRow = item.row,
-            oldCol = item.col,
-            newItem = item.newItem;
+
+        var item = this.item;
+        var oldRow = item.row;
+        var oldCol = item.col;
+        var newItem = item.newItem;
+
+        // PARTIAL LAYOUT: This condition can only occur while a item is being 
+        // dragged. The purpose of this is to only swap positions within a row, 
+        // which will prevent a item from jumping to another row if a space
+        // is available. Without this, a large item in column 0 may appear 
+        // to be stuck if hit by a smaller item, and if there is space in the 
+        // row above for the smaller item. When the user stops dragging the 
+        // item, a full layout update will happen, allowing items to move to
+        // available spaces in rows above them.
 
         if (partialLayout) {
             row = item.row;
-            if (item.row !== rowToUpdate)
-                return;
+            if (item.row !== rowToUpdate) return;
         }
 
+        // Update trackers when colCount is exceeded 
         if (col + item.colspan > colCount) {
-            col = 0;
-            row++;
+            col = 0; row++;
         }
 
         $.extend(item, {
             col: col,
             row: row,
             index: index,
-            x: col + spacerStep + (col * colSize),
-            y: row + spacerStep + (col * rowSize),
+            x: col * spacerStep + (col * colSize),
+            y: row * spacerStep + (row * rowSize),
             width: item.colspan * colSize + ((item.colspan - 1) * spacerStep),
             height: item.rowspan * rowSize
         });
+
         col += item.colspan;
 
+        // If the item being dragged is in bounds, set a new
+        // last index in case it goes out of bounds
         if (item.isDragging && item.inBounds) {
             item.lastIndex = index;
         }
 
         if (newItem) {
+            // Clear the new item flag
             item.newItem = false;
 
             var from = {
@@ -204,13 +241,17 @@ function layoutInvalidated(rowToUpdate) {
                 scale: 1,
                 zIndex: zIndex
             }
-
             timeline.fromTo(element, time, from, to, "reflow");
         }
 
+        // Don't animate the item that is being dragged and
+        // only animate the items that have changes
         if (!item.isDragging && (oldRow !== item.row || oldCol !== item.col)) {
+
             var duration = newItem ? 0 : time;
 
+            // Boost the z-index for items that will travel over 
+            // another item due to a row change
             if (oldRow !== item.row) {
                 timeline.set(element, { zIndex: ++zIndex }, "reflow");
             }

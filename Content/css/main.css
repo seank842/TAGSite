@@ -34,3 +34,36 @@ body, html, .container-fluid{
     margin:0;
     padding:0;
 }
+
+#list {
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 250px;
+    width: 90%;
+    width: 0;
+    position: relative;
+    display: block;
+    margin-top: 50px;
+}
+
+.item {
+    display: block;
+    position: absolute;
+    background-color: yellowgreen;
+    color: aqua;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.layout {
+    color: #efefef;
+    margin-bottom: 15px;
+}
+label {
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+label:hover{
+    color: #efefef;
+}
+

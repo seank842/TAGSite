@@ -12,6 +12,7 @@ function isLoggedIn() {
     } else {
         var postD = { Token: userToken };
         $.ajax({
+            async: true,
             type: "POST",
             url: "api/login/auth.php",
             data: postD,
@@ -32,25 +33,31 @@ function isLoggedIn() {
     }
 }
 
-function setUsername(){
- var postD = { Token: userToken };
+function setUsername() {
+    if (!localStorage.getItem('userName')) {
+        var postD = { Token: userToken };
         $.ajax({
+            async: true,
             type: "POST",
             url: "api/user/getInfo.php",
             data: postD,
             cache: false,
-			processData: true,
+            processData: true,
             success: function (data) {
                 var results = JSON.parse(data);
-                if (results.success){
-                    $("#userName").html(results.Users.UserName);   
-                   }
-                else{
-                  
+                if (results.success) {
+                    $("#userName").html(results.Users.UserName);
+                    localStorage.setItem('userName', UserName);
+                }
+                else {
+
                     //changeLoc("account");
                 }
             }
-});
+        });
+    } else {
+        $("#userName").html(localStorage.getItem('userName'));
+    }
 }
 
 function changeLoc(newLoc){
@@ -135,7 +142,7 @@ function logout() {
 history.pushState(null, null, document.URL);
 window.addEventListener('popstate', function () {
     if (currentLoc=="home") {
-        return 0;
+        return;
     } else {
         history.pushState(null, null, document.URL);
         $("#home").remove();
@@ -149,6 +156,7 @@ function getCharStats(char){
     var charaID=char.data("charid");
     var postData={charID:charaID};
     $.ajax({
+        async: true,
         type: "POST",
         url: '/api/chara/getStat.php',
     	data: postData,
