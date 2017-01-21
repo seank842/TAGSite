@@ -3,10 +3,11 @@
     spacerSize = 7,
     numItems = 25,
     fixedSize = true,
+    oneColumn = false,
     threshold = "50%",
-    $list = $("list"),
+    $list = $("#list"),
     //Live node list of items
-    //items = $list[0].getElementsByClassName("item"),
+    items = $list[0].getElementsByClassName("item"),
     label = 1,
     zIndex = 1000,
     width = "100%",
@@ -17,34 +18,42 @@
     spacerStep = null,
     shadow1 = "0 1px 3px  0 rgba(0, 0, 0, 0.5), 0 1px 2px 0 rgba(0, 0, 0, 0.6)",
     shadow2 = "0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 2px 2px 0 rgba(0, 0, 0, 0.2)";
-var items = $list[0].getElementsByClassName("item");
+
 $(window).resize(resize);
 
-$(".item").remove();
+init();
 
-TweenLite.to($list, 0.2, { width: width });
-TweenLite.delayedCall(0.25, populateBoard);
+function init() {
+    
+    $(".item").remove();
 
-function populateBoard() {
-    resize();
+    TweenLite.to($list, 0.2, { width: width });
+    TweenLite.delayedCall(0.25, populateBoard);
 
-    for (var i = 0; i < numItems; i++) {
-        createItemSlot();
+    function populateBoard() {
+
+        label = 1;
+        resize();
+
+        for (var i = 0; i < numItems; i++) {
+            createItemSlot();
+        }
     }
 }
-
 function resize() {
-    colCount = Math.floor($list.outerWidth() / (colSize + spacerSize));
+    colCount = oneColumn ? 1 : Math.floor($list.outerWidth() / (colSize + spacerSize));
     spacerStep = colCount == 1 ? spacerSize : (spacerSize * (colCount - 1) / colCount);
     rowCount = 0;
 
     layoutInvalidated();
 }
 
-function changePostion(from, to, rowToUpdate) {
+function changePosition(from, to, rowToUpdate) {
     var $items = $(".item"),
         insert = from > to ? "insertBefore" : "insertAfter";
+
     $items.eq(from)[insert]($items.eq(to));
+
     layoutInvalidated(rowToUpdate);
 }
 
@@ -108,13 +117,13 @@ function createItemSlot() {
         for (var i = 0; i < items.length; i++){
             var testItem = items[i].item,
                 onSameRow = (item.row === testItem.row),
-                rowToUpdate = onSameRow ? tile.row : -1,
+                rowToUpdate = onSameRow ? item.row : -1,
                 shiftLeft = onSameRow ? (this.x < lastX && item.index > i) : true,
                 shiftRight = onSameRow ? (this.x > lastX && item.index < i) : true,
                 validMove = (testItem.positioned && (shiftLeft || shiftRight));
 
             if (this.hitTest(items[i], threshold) && validMove) {
-                changePostion(item.index, i, rowToUpdate);
+                changePosition(item.index, i, rowToUpdate);
                 break;
             }
         }
@@ -123,7 +132,7 @@ function createItemSlot() {
     }
 
     function onRelease() {
-        this.hitTest($list, 0) ? layoutInvalidated : changePostion(item.index, item.lastIndex);
+        this.hitTest($list, 0) ? layoutInvalidated : changePosition(item.index, item.lastIndex);
 
         TweenLite.to(element, 0.2,{
             autoAlpha: 1,
@@ -180,7 +189,7 @@ function layoutInvalidated(rowToUpdate) {
         }
 
         if (newItem) {
-            item.newItem = falsel
+            item.newItem = false;
 
             var from = {
                 autoAlpha: 0,
@@ -199,7 +208,7 @@ function layoutInvalidated(rowToUpdate) {
             timeline.fromTo(element, time, from, to, "reflow");
         }
 
-        if (!item.isDragging && (oldRow !== ite.row || oldCol !== item.col)) {
+        if (!item.isDragging && (oldRow !== item.row || oldCol !== item.col)) {
             var duration = newItem ? 0 : time;
 
             if (oldRow !== item.row) {
