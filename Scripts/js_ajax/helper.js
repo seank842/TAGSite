@@ -47,7 +47,7 @@ function setUsername() {
                 var results = JSON.parse(data);
                 if (results.success) {
                     $("#userName").html(results.Users.UserName);
-                    localStorage.setItem('userName', UserName);
+                    localStorage.setItem('userName', results.Users.UserName);
                 }
                 else {
 
@@ -103,7 +103,19 @@ function changeLoc(newLoc){
 function flipMain(path, barID, callback) {
     $("#mBody").fadeOut(500, function () {
         $("#" + currentLoc).remove();
-        $(".navbar").load("/Resources/html/narBar.html #" + barID, function () {
+        if (!$("#main").length || path == "/Resources/html/loads.html #account") {
+            console.log("is not present");
+            $(".navbar").load("/Resources/html/narBar.html #" + barID, function () {
+                $("#mBody").load(path, function () {
+                    currentLoc = newLoc;
+                    if (callback != undefined) {
+                        console.log("calback");
+                        callback();
+                    }
+                }).fadeIn(500);
+            });
+        } else {
+            console.log("is present");
             $("#mBody").load(path, function () {
                 currentLoc = newLoc;
                 if (callback != undefined) {
@@ -111,7 +123,7 @@ function flipMain(path, barID, callback) {
                     callback();
                 }
             }).fadeIn(500);
-        });
+        }
     });
 
 }
