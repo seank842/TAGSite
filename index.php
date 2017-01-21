@@ -28,7 +28,6 @@
     <!--Load in Content specific gsap plugins/utils-->
     <script src="https://selene.hud.ac.uk/js/gsap/plugins/ThrowPropsPlugin.min.js"></script>
     <script src="https://selene.hud.ac.uk/js/gsap/utils/Draggable.min.js"></script>
-    <script src="Scripts/js_ajax/itemGrid.js"></script>
 </head>
 <body>
 <div class="navbar" style="background-color: white !important; border-radius:0px"> </div>
