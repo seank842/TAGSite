@@ -143,6 +143,14 @@ function showInvent() {
     changeLoc("invent");
 }
 
+function logoClick() {
+    if (userToken) {
+        changeLoc("home");
+    } else {
+        changeLoc("account");
+    }
+}
+
 function logout() {
     localStorage.clear();
     console.log("logged out");
