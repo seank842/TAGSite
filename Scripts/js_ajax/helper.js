@@ -93,7 +93,7 @@ function changeLoc(newLoc){
          case "invent":
             newLocPath = "/Resources/html/inventoryList.html";
             barID = "main";
-            flipMain(newLocPath, barID, function () { setUsername(); });
+            flipMain(newLocPath, barID, function () { pollPlayerItems(); setUsername(); });
             break;
         default:
             console.error.log("new localtion not defined: "+newLocPath);

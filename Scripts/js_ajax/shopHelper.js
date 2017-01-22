@@ -1,24 +1,51 @@
 function itemListShow() {
-    var postData = { Token: localStorage.getItem('userToken') };
-    $.ajax({
-        type: "POST",
-        url: '/api/item/list.php',
-        data: postData,
-        cache: false,
-        success: function (data) {
-            var results = JSON.parse(data);
-            if (results.success) {
-                $.each(results.items.item, function (index, value) {
-					console.log(value);
-                    $("#shop").append("<div class='item'  data-charid='" + value.ItemID + "'><img class='charaImage' align='middle' src='/Resources/image/items/" + value.ImageURL +
-                        "'>Name:" + value.ItemName + "	Value:" + value.Value + " Type:" + value.TypeName+ " Slot:" + value.SlotName
-                        + "<div class='itemChara'></div></div>");
-                });
-                 itemCheckClick();
+    if (!localStorage.getItem('shopData')) {
+        var postData = { Token: localStorage.getItem('userToken') };
+        $.ajax({
+            type: "POST",
+            url: '/api/item/list.php',
+            data: postData,
+            cache: false,
+            success: function (data) {
+                var results = JSON.parse(data);
+                if (results.success) {
+                    /*$.each(results.items.item, function (index, value) {
+                        console.log(value);
+                        $("#shop").append("<div class='item'  data-charid='" + value.ItemID + "'><img class='charaImage' align='middle' src='/Resources/image/items/" + value.ImageURL +
+                            "'>Name:" + value.ItemName + "	Value:" + value.Value + " Type:" + value.TypeName + " Slot:" + value.SlotName
+                            + "<div class='itemChara'></div></div>");
+                        
+                    });
+    
+                    itemCheckClick();*/
+                    console.log(results);
+                    localStorage.setItem('shopData', JSON.stringify(results));
+                    calcDisplay(JSON.parse(localStorage.getItem('shopData')));
+                }
+                else
+                    loadLogin();
             }
-            else
-                loadLogin();
-        }
+        });
+    } else {
+        calcDisplay(JSON.parse(localStorage.getItem('shopData')));
+    }
+}
+
+function calcDisplay(data) {
+    console.log(data);
+    numItems = Object.keys(data.items.item).length;
+    console.log(numItems);
+    if (!numItems < 1) {
+        $.when(loadItemGrid(numItems)).then(writeToBlocks(data));
+    } else {
+        console.log("It's lonely here...")
+    }
+}
+
+function writeToBlocks(data) {
+    $.each(data.items.item, function (index, value) {
+        console.log(index, value, value.ImageURL);
+        $("#" + index).html(value.ItemName);
     });
 }
 
