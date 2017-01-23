@@ -7,7 +7,7 @@ $errorCode=0;
 $operand=array();
 
 		
-	$query="SELECT i.ItemID, i.Name AS ItemName, i.Value,i.ImageURL, i.TypeID, t.Name AS TypeName, i.SlotID, s.Name AS SlotName
+	$query="SELECT i.ItemID, i.Name AS ItemName, i.Value,i.ImageURL , i.TypeID, t.Name AS TypeName, i.SlotID, s.Name AS SlotName
 	FROM tbl_item AS i
 	JOIN tbl_itemtype AS t ON i.TypeID = t.TypeID
 	JOIN tbl_slot AS s ON i.SlotID = s.SlotID";
