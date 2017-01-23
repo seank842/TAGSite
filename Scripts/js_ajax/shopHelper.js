@@ -32,23 +32,13 @@ function itemListShow() {
 }
 
 function calcDisplay(data) {
-    console.log(data);
     numItems = Object.keys(data.items.item).length;
-    console.log(numItems);
     if (!numItems < 1) {
-        $.when(loadItemGrid(numItems)).then(writeToBlocks(data));
+        loadItemGrid(numItems, data);
     } else {
         console.log("It's lonely here...")
     }
 }
-
-function writeToBlocks(data) {
-    $.each(data.items.item, function (index, value) {
-        console.log(index, value, value.ImageURL);
-        $("#" + index).html(value.ItemName);
-    });
-}
-
 
 function itemCheckClick(){
 	$('.item').on("click",function(){

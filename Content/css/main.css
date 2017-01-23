@@ -48,7 +48,6 @@ body, html, .container-fluid{
 .item {
     display: block;
     position: absolute;
-    background-color: yellowgreen;
     color: aqua;
     padding: 5px;
     font-weight: bold;
