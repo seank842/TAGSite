@@ -70,9 +70,8 @@
     }
 
     function createItem() {
-        console.log(data.items.item[label].ImageURL);
         var colspan = fixedSize || oneColumn ? 1 : Math.floor(Math.random() * 2) + 1,
-            element = $("<div></div>").addClass("item").attr('id', label).css("background", "yellowgreen url(Resources/image/items/" + data.items.item[label].ImageURL+") right no-repeat").css("background-size","contain").html(data.items.item[label++],ItemName),
+            element = $("<div></div>").addClass("item").attr('id', label).css("background", "yellowgreen url(Resources/image/items/" + data.items.item[label].ImageURL+") right no-repeat").css("background-size","contain").html(data.items.item[label++].ItemName),
             lastX = 0;
         //background: green url(images/shadow.gif) right no-repeat
 

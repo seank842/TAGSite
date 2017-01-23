@@ -32,9 +32,7 @@ function itemListShow() {
 }
 
 function calcDisplay(data) {
-    console.log(data);
     numItems = Object.keys(data.items.item).length;
-    console.log(numItems);
     if (!numItems < 1) {
         loadItemGrid(numItems, data);
     } else {

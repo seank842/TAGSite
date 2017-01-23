@@ -21,14 +21,3 @@
         calcDisplay(JSON.parse(localStorage.getItem('playerItems')));
     }
 }
-
-function calcDisplayPlayer(playerData) {
-    console.log(playerData);
-    numItems = Object.keys(playerData.items.item).length;
-    console.log(numItems);
-    if (numItems < 1) {
-        console.log("It's lonely here...")
-    } else {
-        loadItemGrid(numItems);
-    }
-}
