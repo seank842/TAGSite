@@ -5,7 +5,7 @@
 $(document).on("change", "#newUser", function () {
     if (document.getElementById("newUser").checked) {
         $("<div id='temp'>").load("/Resources/html/loads.html #regEmail").prependTo("#loginForm").height(0).animate({ height: 47 }, 500);
-        $("#tacDiv").css("display", "block").animate({ height: 40, opacity: 100, marginBottom: 10 }, 500);
+        $("#tacDiv").css("display", "block").animate({ height: 40, opacity: 100, marginBottom: 10 }, 500)/*.prop('required', true)*/;
         pointer = "api/reg/registartion.php";
         document.loginForm.action = pointer;
         document.loginForm.login_reg_but.innerHTML = "Register";
@@ -13,13 +13,19 @@ $(document).on("change", "#newUser", function () {
     else {
         $("#temp").slideToggle(500, function (e) { $("#temp").remove(); });
         $("#tacDiv").animate({ height: 0, opacity: 0, marginBottom: -6 }, 500, function () {
-            $("#tacDiv").css("display", "none")
+            $("#tacDiv").css("display", "none")/*.prop('required', false)*/;
         });
         pointer = "api/login/login.php";
         document.loginForm.action = pointer;
         document.loginForm.login_reg_but.innerHTML = "Login";
     }
 });
+/*
+$("#loginForm").submit(function (event) {
+    console.log("Handler for .submit() called.");
+    event.preventDefault();
+});
+*/
 
 function preSubmit(){
     var reg;
