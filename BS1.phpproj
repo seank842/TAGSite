@@ -71,7 +71,11 @@
     <Folder Include="Resources\image\" />
     <Folder Include="Resources\image\items\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Scripts\gsap\easing\" />
+    <Folder Include="Scripts\gsap\plugins\" />
+    <Folder Include="Scripts\gsap\utils\" />
     <Folder Include="Scripts\js_ajax\" />
+    <Folder Include="Scripts\gsap\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -106,6 +110,27 @@
     <Content Include="Resources\image\temp_image.svg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\gsap\easing\EasePack.js" />
+    <Content Include="Scripts\gsap\jquery.gsap.js" />
+    <Content Include="Scripts\gsap\plugins\AttrPlugin.js" />
+    <Content Include="Scripts\gsap\plugins\BezierPlugin.js" />
+    <Content Include="Scripts\gsap\plugins\ColorPropsPlugin.js" />
+    <Content Include="Scripts\gsap\plugins\CSSPlugin.js" />
+    <Content Include="Scripts\gsap\plugins\CSSRulePlugin.js" />
+    <Content Include="Scripts\gsap\plugins\DirectionalRotationPlugin.js" />
+    <Content Include="Scripts\gsap\plugins\EaselPlugin.js" />
+    <Content Include="Scripts\gsap\plugins\EndArrayPlugin.js" />
+    <Content Include="Scripts\gsap\plugins\ModifiersPlugin.js" />
+    <Content Include="Scripts\gsap\plugins\RaphaelPlugin.js" />
+    <Content Include="Scripts\gsap\plugins\RoundPropsPlugin.js" />
+    <Content Include="Scripts\gsap\plugins\ScrollToPlugin.js" />
+    <Content Include="Scripts\gsap\plugins\TEMPLATE_Plugin.js" />
+    <Content Include="Scripts\gsap\plugins\TextPlugin.js" />
+    <Content Include="Scripts\gsap\TimelineLite.js" />
+    <Content Include="Scripts\gsap\TimelineMax.js" />
+    <Content Include="Scripts\gsap\TweenLite.js" />
+    <Content Include="Scripts\gsap\TweenMax.js" />
+    <Content Include="Scripts\gsap\utils\Draggable.js" />
     <Content Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
