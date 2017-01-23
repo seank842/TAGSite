@@ -22,13 +22,13 @@
 <script src="Scripts/js_ajax/charListHelper.js"></script>
 <script src="Scripts/js_ajax/shopHelper.js"></script>
 <script src="Scripts/js_ajax/inventHelper.js"></script>
+<script src="Scripts/js_ajax/inventHelper.js"></script>
 
 <!--Load in gsap base-->
     <script src="https://selene.hud.ac.uk/js/gsap/TweenMax.min.js"></script>
     <!--Load in Content specific gsap plugins/utils-->
     <script src="https://selene.hud.ac.uk/js/gsap/plugins/ThrowPropsPlugin.min.js"></script>
     <script src="https://selene.hud.ac.uk/js/gsap/utils/Draggable.min.js"></script>
-    <script src="Scripts/js_ajax/inventHelper.js"></script>
 </head>
 <body>
 <div class="navbar" style="background-color: white !important; border-radius:0px"> </div>
