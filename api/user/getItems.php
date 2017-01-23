@@ -17,7 +17,7 @@ if(missingOperand($operand,$_POST)){
 	} else
 	{
 		
-	$query="SELECT o.OwnershipID,o.ItemID,i.Name,i.Value,i.TypeID, t.Name AS TypeName, i.SlotID, s.Name AS SlotName
+	$query="SELECT o.OwnershipID,o.ItemID,i.Name,i.Value, i.ImageURL, i.TypeID, t.Name AS TypeName, i.SlotID, s.Name AS SlotName
 	FROM tbl_ownership AS o
 	JOIN tbl_item AS i ON o.ItemID = i.ItemID
 	JOIN tbl_itemtype AS t ON i.TypeID = t.TypeID

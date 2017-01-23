@@ -11,7 +11,7 @@ if(missingOperand($operand,$_POST)){
 	$cID=$data['CharID'];
 	$userID = auth($token,$link);
 	
-	$query="SELECT e.EquipID,e.OwnershipID,i.ItemID,i.Name AS ItemName, i.Value, i.TypeID, t.Name AS TypeName, i.SlotID, s.Name AS SlotName
+	$query="SELECT e.EquipID,e.OwnershipID,i.ItemID,i.Name AS ItemName, i.Value, i.TypeID,i.ImageURL, t.Name AS TypeName, i.SlotID, s.Name AS SlotName
 			FROM tbl_equip AS e
 			JOIN tbl_ownership AS o ON e.OwnershipID = o.OwnershipID
 			JOIN tbl_item As i ON o.ItemID = i.ItemID
