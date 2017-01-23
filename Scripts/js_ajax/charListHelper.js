@@ -2,6 +2,7 @@ function charListShow() {
 	console.log("CharList Show");
     var postData = { Token: localStorage.getItem('userToken') };
     $.ajax({
+        async: true,
         type: "POST",
         url: '/api/chara/list.php',
         data: postData,

@@ -27,6 +27,7 @@ function preSubmit(){
         reg=true;
         if ($("#tac").prop('checked')) {
             $.ajax({
+                async: true,
                 type: "POST",
                 url: '/api/reg/prereg.php',
                 data: $("#loginForm").serialize(),
@@ -55,6 +56,7 @@ function preSubmit(){
 
 function onSubmit(reg) {
     $.ajax({
+        async: true,
         type: "POST",
         url: pointer,
         data: $("#loginForm").serialize(),

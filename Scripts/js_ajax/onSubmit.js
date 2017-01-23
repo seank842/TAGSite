@@ -6,6 +6,7 @@ function onSubmit() {
     if ($.trim(username).length > 0 && $.trim(password).length > 0) {
         console.log(4);
         $.ajax({
+            async: true,
             type: "POST",
             url: "login.php",
             data: dataString,

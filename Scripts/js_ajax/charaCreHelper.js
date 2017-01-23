@@ -4,6 +4,7 @@
     var postD = { CharName: name, Token: userToken };
     console.log(postD);
     $.ajax({
+        async:true,
         type: "POST",
         url: "api/chara/new.php",
         data: postD,
