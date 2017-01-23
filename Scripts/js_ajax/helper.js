@@ -60,6 +60,34 @@ function setUsername() {
     }
 }
 
+function setGold(){
+if (!localStorage.getItem('gold')) {
+        var postD = { Token: userToken };
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "api/user/getInfo.php",
+            data: postD,
+            cache: false,
+            processData: true,
+            success: function (data) {
+                var results = JSON.parse(data);
+                if (results.success) {
+                    $("#gold").html(results.Users.Money);
+                    localStorage.setItem('gold', results.Users.Money);
+                }
+                else {
+
+                    //changeLoc("account");
+                }
+            }
+        });
+    } else {
+        $("#gold").html(localStorage.getItem('gold'));
+    }
+}
+
+
 function changeLoc(newLoc){
 	userToken = localStorage.getItem('userToken');
     $(currentLoc).remove();
@@ -73,27 +101,27 @@ function changeLoc(newLoc){
         case "home":
             newLocPath = "/Resources/html/homeLoads.html";
 			barID="main";
-            flipMain(newLocPath, barID, function () { setUsername(); });
+            flipMain(newLocPath, barID, function () { setUsername(); setGold(); });
             break;
         case "charaCre":
             newLocPath = "/Resources/html/charaCreLoads.html";
 			barID="main";
-            flipMain(newLocPath, barID, function () { setUsername(); });
+            flipMain(newLocPath, barID, function () { setUsername(); setGold(); });
             break;
         case "charaList":
             newLocPath = "/Resources/html/charaList.html";
 			barID="main";
-            flipMain(newLocPath, barID, function () { charListShow(); setUsername(); });
+            flipMain(newLocPath, barID, function () { charListShow(); setUsername(); setGold(); });
             break;
 		 case "shop":
             newLocPath = "/Resources/html/shop.html";
 			barID="main";
-            flipMain(newLocPath, barID, function () { itemListShow(); setUsername(); });
+            flipMain(newLocPath, barID, function () { itemListShow(); setUsername(); setGold(); });
             break;
          case "invent":
             newLocPath = "/Resources/html/inventoryList.html";
             barID = "main";
-            flipMain(newLocPath, barID, function () { pollPlayerItems(); setUsername(); });
+            flipMain(newLocPath, barID, function () { pollPlayerItems(); setUsername(); setGold(); });
             break;
         default:
             console.error.log("new localtion not defined: "+newLocPath);
