@@ -122,13 +122,12 @@
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
-    <Content Include="Scripts\js_ajax\inventHelper.js" />
     <Content Include="Scripts\js_ajax\charaCreHelper.js" />
     <Content Include="Scripts\js_ajax\charListHelper.js" />
     <Content Include="Scripts\js_ajax\helper.js" />
     <Content Include="Scripts\js_ajax\itemGrid.js" />
     <Content Include="Scripts\js_ajax\loginHelper.js" />
     <Content Include="Scripts\js_ajax\onSubmit.js" />
-    <Content Include="Scripts\js_ajax\shopHelper.js" />
+    <Content Include="Scripts\js_ajax\itemHelper.js" />
   </ItemGroup>
 </Project>
