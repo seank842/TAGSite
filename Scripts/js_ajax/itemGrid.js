@@ -71,7 +71,7 @@
 
     function createItem() {
         var colspan = fixedSize || oneColumn ? 1 : Math.floor(Math.random() * 2) + 1,
-            element = $("<div></div>").addClass("item").attr({ id: label, 'data-toggle': "tooltip", title: "" }).css("background", "yellowgreen url(Resources/image/items/" + data.items.item[label].ImageURL + ") right no-repeat").css("background-size", "contain").html(data.items.item[label].ItemName).tooltip({ html: true, title: data.items.item[label].SlotName + ':<br> &nbsp;Type: ' + data.items.item[label].TypeName + '<br> &nbsp;<i class="glyphicon glyphicon-xbt"></i>: ' + data.items.item[label++].Value }),
+            element = $("<div></div>").addClass("item").attr({ id: label, 'data-toggle': "tooltip", title: "", onclick:"getId(this)" }).css("background", "yellowgreen url(Resources/image/items/" + data.items.item[label].ImageURL + ") right no-repeat").css("background-size", "contain").html(data.items.item[label].ItemName).tooltip({ html: true, title: data.items.item[label].SlotName + ':<br> &nbsp;Type: ' + data.items.item[label].TypeName + '<br> &nbsp;<i class="glyphicon glyphicon-xbt"></i>: ' + data.items.item[label++].Value }),
             lastX = 0;
 
         //background: green url(images/shadow.gif) right no-repeat
