@@ -20,6 +20,7 @@
                     $("#agiVal").html(results.Stats.agi);
                     $("#stamVal").html(results.Stats.sta);
                     $("#magVal").html(results.Stats.mag);
+                    $('#charaCreForm').fadeOut();
                 }
             //showList();
         }

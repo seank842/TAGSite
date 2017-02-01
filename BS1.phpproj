@@ -129,5 +129,6 @@
     <Content Include="Scripts\js_ajax\loginHelper.js" />
     <Content Include="Scripts\js_ajax\onSubmit.js" />
     <Content Include="Scripts\js_ajax\itemHelper.js" />
+    <Content Include="Scripts\js_ajax\registerHelper.js" />
   </ItemGroup>
 </Project>
