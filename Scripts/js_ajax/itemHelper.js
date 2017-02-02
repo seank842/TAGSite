@@ -36,8 +36,16 @@ function pollPlayerItems() {
                 var results = JSON.parse(data);
                 if (results.success) {
                     console.log(results);
-                    localStorage.setItem('playerItems', JSON.stringify(results));
-                    calcDisplay(JSON.parse(localStorage.getItem('playerItems')));
+                    if ($("#charaEquip").length) {
+                        var filtered = results.items.item.filter(function(index){
+                            return index.TypeID !== 5;
+                        });
+                        localStorage.setItem('playerEquipment', JSON.stringify(filtered));
+                        calcDisplay(JSON.parse(localStorage.getItem('playerEquipment')));
+                    } else {
+                        localStorage.setItem('playerItems', JSON.stringify(results));
+                        calcDisplay(JSON.parse(localStorage.getItem('playerItems')));
+                    }
                 } else {
                     loadLogin();
                 }

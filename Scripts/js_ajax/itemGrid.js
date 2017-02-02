@@ -24,14 +24,15 @@
 
     function init() {
 
-        var width = startWidth;
+       
 
         // This value is defined when this function 
         // is fired by a radio button change event
 
         fixedSize = true;
         colSize = startSize;
-
+        $("#list").height(200);
+        var width = startWidth;
 
         $(".item").remove();
 
@@ -70,14 +71,13 @@
     }
 
     function createItem() {
-<<<<<<< HEAD
-        var colspan = fixedSize || oneColumn ? 1 : Math.floor(Math.random() * 2) + 1,
-            element = $("<div></div>").addClass("item").attr({ id: label, 'data-toggle': "tooltip", title: "", onclick:"getId(this)" }).css("background", "yellowgreen url(Resources/image/items/" + data.items.item[label].ImageURL + ") right no-repeat").css("background-size", "contain").html(data.items.item[label].ItemName).tooltip({ html: true, title: data.items.item[label].SlotName + ':<br> &nbsp;Type: ' + data.items.item[label].TypeName + '<br> &nbsp;<i class="glyphicon glyphicon-xbt"></i>: ' + data.items.item[label++].Value }),
-=======
-        var colspan = (fixedSize || oneColumn) ? 1 : Math.floor(Math.random() * 2) + 1,
-            element = $("<div></div>").addClass("item").attr({ id: label, 'data-toggle': "tooltip", title: "" }).css("background", "yellowgreen url(Resources/image/items/" + data.items.item[label].ImageURL + ") right no-repeat").css("background-size", "contain").html(data.items.item[label].ItemName).tooltip({ html: true, title: data.items.item[label].SlotName + ':<br> &nbsp;Type: ' + data.items.item[label].TypeName + '<br> &nbsp;<i class="glyphicon glyphicon-xbt"></i>: ' + data.items.item[label++].Value }),
->>>>>>> f0756ee40d5d8d5e28b361008672b467d0b96b40
-            lastX = 0;
+        var colspan = fixedSize || oneColumn ? 1 : Math.floor(Math.random() * 2) + 1;
+        if (!$("#inventory").length) {
+            var element = $("<div></div>").addClass("item").attr({ id: label, 'data-toggle': "tooltip", title: "", onclick: "getId(this)" }).css("background", "yellowgreen url(Resources/image/items/" + data.items.item[label].ImageURL + ") right no-repeat").css("background-size", "contain").html(data.items.item[label].ItemName).tooltip({ html: true, title: data.items.item[label].SlotName + ':<br> &nbsp;Type: ' + data.items.item[label].TypeName + '<br> &nbsp;<i class="glyphicon glyphicon-xbt"></i>: ' + data.items.item[label++].Value });
+        } else {
+            var element = $("<div></div>").addClass("item").attr({ id: label, 'data-toggle': "tooltip", title: "" }).css("background", "yellowgreen url(Resources/image/items/" + data.items.item[label].ImageURL + ") right no-repeat").css("background-size", "contain").html(data.items.item[label].ItemName).tooltip({ html: true, title: data.items.item[label].SlotName + ':<br> &nbsp;Type: ' + data.items.item[label].TypeName + '<br> &nbsp;<i class="glyphicon glyphicon-xbt"></i>: ' + data.items.item[label++].Value });
+        }
+        lastX = 0;
 
         //background: green url(images/shadow.gif) right no-repeat
 
@@ -85,7 +85,7 @@
             onDrag: onDrag,
             onPress: onPress,
             onRelease: onRelease,
-            zIndexBoost: false
+            zIndexBoost: false,
         });
 
         var item = {
@@ -107,9 +107,8 @@
         };
 
 
-        if ($("#shop").length) {
+        if (!$("#inventory").length) {
             mDraggable[0].disable();
-
         }
 
         element[0].item = item;

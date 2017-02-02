@@ -105,6 +105,7 @@
     <Content Include="Resources\html\loads.html" />
     <Content Include="Resources\html\navBar.html" />
     <Content Include="Resources\html\shop.html" />
+    <Content Include="Resources\image\armor_stand.jpg" />
     <Content Include="Resources\image\charTemp.jpg" />
     <Content Include="Resources\image\items\bow.png" />
     <Content Include="Resources\image\items\chest.jpg" />
@@ -131,6 +132,6 @@
     <Content Include="Scripts\js_ajax\loginHelper.js" />
     <Content Include="Scripts\js_ajax\onSubmit.js" />
     <Content Include="Scripts\js_ajax\itemHelper.js" />
-    <Content Include="Scripts\js_ajax\registerHelper.js" />
+    <Content Include="Scripts\js_ajax\shopHelper.js" />
   </ItemGroup>
 </Project>

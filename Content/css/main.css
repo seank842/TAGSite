@@ -69,3 +69,35 @@ label:hover{
 .navbar-brand{
     cursor:pointer;
 }
+
+img.charaImage {
+    width: 75px;
+    height: auto;
+}
+
+.stats {
+    height: 0px;
+    opacity: 0;
+    display: none;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+.armorSlot{
+    border:dotted;
+    border-color:blueviolet;
+    width:80px;
+    height:80px;
+    position:absolute;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:78px 78px;
+}
