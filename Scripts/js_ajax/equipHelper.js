@@ -1,4 +1,5 @@
 ﻿var charid = null;
+
 function getId(elem) {
     var name = $(elem).html(),
         data = JSON.parse(localStorage.getItem("playerItems")),
@@ -76,10 +77,50 @@ function equipItem(itemId) {
             var results = JSON.parse(data);
             console.log(results);
             if (results.success) {
-                //do stuff
+                console.log("item equiped");
             } else {
-                //send to error handler
+                errorReporting(results.error_code, itemId);
             }
+        }
+    });
+}
+
+function errorReporting(eCode, itemId) {
+    switch (eCode) {
+        case 3:
+            console.log("This Item is already equiped.");
+            break;
+        case 4:
+            console.log("This item cannot be equiped because you are too newbie.");
+            break;
+        case 5:
+            console.log("There is an item already equiped in that slot will replace.");
+            deEquip(itemId);
+    }
+}
+
+function deEquip(itemId) {
+    data = JSON.parse(localStorage.getItem('playerItems'));
+    $.each(data.items.item, function (index) {
+        if (data.items.item[index].OwnershipID == itemId) {
+            var postD = { Token: localStorage.getItem('userToken'), EquipID: data.items.item[index].OwnershipID };
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: "api/item/deEquip.php",
+                data: postD,
+                cache: false,
+                processData: true,
+                success: function (data) {
+                    var results = JSON.parse(data);
+                    console.log(results);
+                    if (results.success) {
+                        equipItem(itemId);
+                    } else {
+                        console.log("Was unable to deequip item");
+                    }
+                }
+            });
         }
     });
 }

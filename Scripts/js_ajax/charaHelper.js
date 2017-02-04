@@ -22,7 +22,11 @@
                         ".jpg'>Name:" + value.Name + "	Health:" + value.CurrentHealth + "/" + value.MaxHealth
                         + "<div class='charChara'></div></div>");
                 });
-                charCheckClick();
+                if ($("#charaStats").length) {
+                    charCheckClick();
+                } else {
+                    charCheckClickA();
+                }
             }
             else
                 loadLogin();
@@ -36,5 +40,15 @@ function charCheckClick() {
         $("#stats").removeAttr("hidden");
         $("#charaList").hide();
         checkBuff();
+    });
+}
+
+function charCheckClickA() {
+    $('.chara').on("click", function () {
+        charid = $(this).data('charid');
+        $("#items").removeAttr("hidden");
+        $("#charaList").hide();
+        pollPlayerItems();
+        setSlots();
     });
 }
