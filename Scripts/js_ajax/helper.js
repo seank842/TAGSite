@@ -131,7 +131,7 @@ function changeLoc(newLoc){
          case "charaStats":
              newLocPath = "/Rseources/html/charaStats.html";
              barID = "main";
-             flipMain(newLocPath, barID, function () { charaListShow(); setUsername(); setGold(); });
+             flipMain(newLocPath, barID, function () { charListShow(); setUsername(); setGold(); });
              break;
         default:
             console.error.log("new localtion not defined: "+newLocPath);

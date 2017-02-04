@@ -1,5 +1,27 @@
 ﻿<div id="charaStats">
-    <div id="stats" hidden></div>
+    <div id="stats" hidden>
+        <div id="container-1" class="container">
+            <button type="button" class="btn btn-def btn-block" id="stre" onclick="lowerStat(this);">-</button>
+            <div id="stre_cont" class="container"></div>
+            <button type="button" class="btn btn-def btn-block" id="stre" onclick="addStat(this);">+</button>
+        </div>
+        <div id="container-2" class="container">
+            <button type="button" class="btn btn-def btn-block" id="agil" onclick="lowerStat(this);">-</button>
+            <div id="agil_cont" class="container"></div>
+            <button type="button" class="btn btn-def btn-block" id="agil" onclick="addStat(this);">+</button>
+        </div>
+        <div id="container-3" class="container">
+            <button type="button" class="btn btn-def btn-block" id="sta" onclick="lowerStat(this);">-</button>
+            <div id="sta_cont" class="container"></div>
+            <button type="button" class="btn btn-def btn-block" id="sta" onclick="addStat(this);">+</button>
+        </div>
+        <div id="container-4" class="container">
+            <button type="button" class="btn btn-def btn-block" id="magic" onclick="lowerStat(this);">-</button>
+            <div id="magic_cont" class="container"></div>
+            <button type="button" class="btn btn-def btn-block" id="magic" onclick="addStat(this);">+</button>
+        </div>
+        <button type="button" class="btn btn-def btn-block" onclick="save();">Save</button>
+    </div>
     <div id="charaList" class="noselect"></div>
     <script src="Scripts/js_ajax/charaHelper.js"></script>
     <script src="Scripts/js_ajax/charaStatUps.js"></script>

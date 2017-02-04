@@ -33,9 +33,8 @@
 function charCheckClick() {
     $('.chara').on("click", function () {
         charid = $(this).data('charid');
-        $("#items").removeAttr("hidden");
+        $("#stats").removeAttr("hidden");
         $("#charaList").hide();
-        pollPlayerItems();
-        setSlots();
+        checkBuff();
     });
 }

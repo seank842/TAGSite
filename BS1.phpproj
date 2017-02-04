@@ -114,6 +114,10 @@
     <Content Include="Resources\image\items\fire.jpg" />
     <Content Include="Resources\image\logo.png" />
     <Content Include="Resources\image\petTemp.jpg" />
+    <Content Include="Resources\image\statLine_stre.svg" />
+    <Content Include="Resources\image\statLine_sta.svg" />
+    <Content Include="Resources\image\statLine_magic.svg" />
+    <Content Include="Resources\image\statLine_agil.svg" />
     <Content Include="Resources\image\temp_image.svg" />
     <Content Include="safari-pinned-tab.svg" />
     <Content Include="Scripts\bootstrap.js" />
