@@ -94,35 +94,45 @@ function changeLoc(newLoc){
     var newLocPath;
     switch(newLoc){
         case "account":
-            newLocPath = "/Resources/html/loads.html #account";
-			barID="preLogin";
-            flipMain(newLocPath, barID, function () { $("#mBody").append("<script src='https://www.google.com/recaptcha/api.js'></script>"); });
-            break;
+             newLocPath = "/Resources/html/loads.html #account";
+             barID = "preLogin";
+             flipMain(newLocPath, barID, function () { $("#mBody").append("<script src='https://www.google.com/recaptcha/api.js'></script>"); });
+             break;
         case "home":
-            newLocPath = "/Resources/html/homeLoads.html";
-			barID="main";
-            flipMain(newLocPath, barID, function () { setUsername(); setGold(); });
-            break;
+             newLocPath = "/Resources/html/homeLoads.html";
+             barID = "main";
+             flipMain(newLocPath, barID, function () { setUsername(); setGold(); });
+             break;
         case "charaCre":
-            newLocPath = "/Resources/html/charaCreLoads.html";
-			barID="main";
-            flipMain(newLocPath, barID, function () { setUsername(); setGold(); });
-            break;
+             newLocPath = "/Resources/html/charaCreLoads.html";
+             barID = "main";
+             flipMain(newLocPath, barID, function () { setUsername(); setGold(); });
+             break;
         case "charaList":
-            newLocPath = "/Resources/html/charaList.html";
-			barID="main";
-            flipMain(newLocPath, barID, function () { charListShow(); setUsername(); setGold(); });
-            break;
-		 case "shop":
-            newLocPath = "/Resources/html/shop.html";
-			barID="main";
-            flipMain(newLocPath, barID, function () { itemListShow(); setUsername(); setGold(); });
-            break;
+             newLocPath = "/Resources/html/charaList.html";
+             barID = "main";
+             flipMain(newLocPath, barID, function () { charListShow(); setUsername(); setGold(); });
+             break;
+        case "shop":
+             newLocPath = "/Resources/html/shop.html";
+             barID = "main";
+             flipMain(newLocPath, barID, function () { itemListShow(); setUsername(); setGold(); });
+             break;
          case "invent":
-            newLocPath = "/Resources/html/inventoryList.html";
-            barID = "main";
-            flipMain(newLocPath, barID, function () { pollPlayerItems(); setUsername(); setGold(); });
-            break;
+             newLocPath = "/Resources/html/inventoryList.html";
+             barID = "main";
+             flipMain(newLocPath, barID, function () { pollPlayerItems(); setUsername(); setGold(); });
+             break;
+         case "charaEquip":
+             newLocPath = "/Resources/html/charaEquip.html";
+             barID = "main";
+             flipMain(newLocPath, barID, function () { charListShow(); setUsername(); setGold(); });
+             break;
+         case "charaStats":
+             newLocPath = "/Rseources/html/charaStats.html";
+             barID = "main";
+             flipMain(newLocPath, barID, function () { charaListShow(); setUsername(); setGold(); });
+             break;
         default:
             console.error.log("new localtion not defined: "+newLocPath);
     }
@@ -169,6 +179,14 @@ function showList() {
 
 function showInvent() {
     changeLoc("invent");
+}
+
+function showCharaEquip() {
+    changeLoc("charaEquip");
+}
+
+function showCharaStats() {
+    changeLoc("charaStats");
 }
 
 function logoClick() {
