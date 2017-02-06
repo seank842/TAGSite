@@ -90,6 +90,7 @@ function errorReporting(eCode, itemId) {
     switch (eCode) {
         case 3:
             console.log("This Item is already equiped.");
+            deEquip(itemId);
             break;
         case 4:
             console.log("This item cannot be equiped because you are too newbie.");
