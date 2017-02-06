@@ -1,4 +1,4 @@
-﻿var charid = null;
+﻿var charid = null, equipedId=null;
 
 function getId(elem) {
     var name = $(elem).html(),
@@ -32,6 +32,7 @@ function setSlots() {
             var results = JSON.parse(data);
             console.log(results);
             if (results.success) {
+                equipedId=results;
                 $.each(results.items.item, function (index) {
                     switch (results.items.item[index].SlotID) {
                         case "1":
@@ -100,10 +101,11 @@ function errorReporting(eCode, itemId) {
 }
 
 function deEquip(itemId) {
-    data = JSON.parse(localStorage.getItem('playerItems'));
     $.each(data.items.item, function (index) {
+        console.log(equipedId.items.item[index].EquipID);
+        /*
         if (data.items.item[index].OwnershipID == itemId) {
-            var postD = { Token: localStorage.getItem('userToken'), EquipID: data.items.item[index].OwnershipID };
+            var postD = { Token: localStorage.getItem('userToken'), EquipID: equipedId.items.item[index].EquipID };
             $.ajax({
                 async: true,
                 type: "POST",
@@ -121,6 +123,6 @@ function deEquip(itemId) {
                     }
                 }
             });
-        }
+        }*/
     });
 }
