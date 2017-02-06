@@ -103,9 +103,7 @@ function errorReporting(eCode, itemId) {
 
 function deEquip(itemId) {
     $.each(equipedId.items.item, function (index) {
-        console.log(equipedId.items.item[index].EquipID);
-        /*
-        if (data.items.item[index].OwnershipID == itemId) {
+        if (equipedId.items.item[index].OwnershipID == itemId) {
             var postD = { Token: localStorage.getItem('userToken'), EquipID: equipedId.items.item[index].EquipID };
             $.ajax({
                 async: true,
@@ -124,6 +122,6 @@ function deEquip(itemId) {
                     }
                 }
             });
-        }*/
+        }
     });
 }
