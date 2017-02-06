@@ -16,14 +16,13 @@ if(missingOperand($operand,$_POST)){
         
     } else
     {
-        
-        $query="SELECT u.UserID, u.UserName, SUM(cr.Value) AS Score FROM `tbl_character`AS ch
-        JOIN tbl_charactercharacteristic AS cr ON cr.CharacterID= ch.CharacterID AND cr.CharacteristicID = 1
-        JOIN tbl_user AS u on u.UserID = ch.userID
-        GROUP BY u.userID
-        ORDER BY Score DESC";
+        $query="SELECT UserName, UserID, Score, FIND_IN_SET( Score, ( SELECT GROUP_CONCAT(Score ORDER BY Score DESC ) FROM leaderBoard ) ) AS Rank FROM leaderBoard WHERE UserID='$userID'";
         $query = mysqli_query($link,$query);
-        
+        $curentUser = mysqli_fetch_array($query);
+
+
+        $query="SELECT UserName, UserID, Score, FIND_IN_SET( Score, ( SELECT GROUP_CONCAT(Score ORDER BY Score DESC ) FROM leaderBoard ) ) AS Rank FROM leaderBoard";
+        $query = mysqli_query($link,$query);        
         
     }
     
@@ -38,7 +37,7 @@ if($success){
     while($line = mysqli_fetch_array($query)){
         array_push($results ["user"], $line);
     }
-    $reultrs = array("success"=>$success,"user"=>$results);
+    $reultrs = array("success"=>$success,"user"=>$results,"userPos"=>$curentUser);
 }else
 {
     $reultrs = array("success"=>$success, "error_code" => $errorCode);
