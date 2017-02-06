@@ -102,7 +102,7 @@ function errorReporting(eCode, itemId) {
 }
 
 function deEquip(itemId) {
-    $.each(data.items.item, function (index) {
+    $.each(equipedId.items.item, function (index) {
         console.log(equipedId.items.item[index].EquipID);
         /*
         if (data.items.item[index].OwnershipID == itemId) {
