@@ -19,7 +19,7 @@ if(missingOperand($operand,$_POST)){
     {
         $query="SELECT m.MessageID, m.Message,m.time,u.UserName FROM tbl_message AS m
         JOIN tbl_user AS u ON m.UserID = u.UserID
-        WHERE m.BoardID='$boardID' ORDER BY m.time ASC";
+        WHERE m.BoardID='$boardID' ORDER BY m.time DESC";
         $query = mysqli_query($link,$query);        
         
     }
