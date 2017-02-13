@@ -30,14 +30,14 @@ if($success){
 		if($line["CharacteristicID"]==1){
 			array_push($results ["stat"], 
 			array(
-			"0"=> $cID,
+			"0"=> "$cID",
         	"1"=> "0",
         	"2"=> "Level Value",
-        	"3"=> getLevel($line['Value']),
-        	"CharacterID"=> $cID,
+        	"3"=> (string)getLevel($line['Value']),
+        	"CharacterID"=> "$cID",
         	"CharacteristicID"=> "0",
         	"Name"=> "Level Value",
-        	"Value"=> getLevel($line['Value'])));
+        	"Value"=> (string)getLevel($line['Value'])));
 		}
     	array_push($results ["stat"], $line);
 		
