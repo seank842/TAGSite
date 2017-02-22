@@ -30,15 +30,8 @@ if(missingOperand($operand,$_POST)){
 		$result=mysqli_query($link, $query) or die (mysqli_error($link));
 		$results=mysqli_fetch_array($result);
 		$cost=$results['Value'];
-		
-		$query="SELECT *
-		FROM tbl_ownership
-		WHERE ItemID = $itemID AND UserID = $userID;";
-		$result=mysqli_query($link, $query) or die (mysqli_error($link));
-		if(mysqli_num_rows($result)>=1){
-			$errorCode=3;
-			$success=false;
-		} else if($cost<=$balence){
+	
+			 if($cost<=$balence){
 		
 			$query="UPDATE tbl_user
 			SET Money = Money - $cost WHERE `UserID` = $userID;";
