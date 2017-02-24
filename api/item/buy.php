@@ -31,10 +31,11 @@ if(missingOperand($operand,$_POST)){
 		$results=mysqli_fetch_array($result);
 		$cost=$results['Value'];
 	
-			 if($cost<=$balence){
+			 if($cost<=$balence && mysqli_num_rows($result)!=0){
 		
 			$query="UPDATE tbl_user
-			SET Money = Money - $cost WHERE `UserID` = $userID;";
+			SET Money = Money - $cost 
+            WHERE UserID = $userID;";
 			mysqli_query($link,$query) or die (mysqli_error($link));
 		
 			$query="INSERT INTO tbl_ownership
