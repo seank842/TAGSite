@@ -1,14 +1,6 @@
 ﻿var charid = null, equipedId=null;
 
-function getId(elem) {
-    var name = $(elem).html(),
-        data = JSON.parse(localStorage.getItem("playerItems")),
-        id = null;
-    $.each(data.items.item, function (i, v) {
-        if (v.ItemName == name) {
-            id = v.OwnershipID;
-        }
-    });
+function getId(id) {
     equipItem(id);
 }
 
@@ -64,7 +56,6 @@ function setSlots() {
 }
 
 function equipItem(itemId) {
-
     var postD = { Token: localStorage.getItem('userToken'), OwnershipID: itemId, CharID: charid };
     console.log(postD);
     $.ajax({
@@ -90,7 +81,6 @@ function errorReporting(eCode, itemId) {
     switch (eCode) {
         case 3:
             console.log("This Item is already equiped.");
-            deEquip(itemId);
             break;
         case 4:
             console.log("This item cannot be equiped because you are too newbie.");

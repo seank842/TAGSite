@@ -25,7 +25,7 @@ function buyItem(itemId) {
             var results = JSON.parse(data);
             console.log(results);
             if (results.success) {
-                //do stuff
+                localStorage.setItem('change',true);
             } else {
                 //send to error handler
             }

@@ -51,6 +51,7 @@
     <Compile Include="api\reg\prereg.php" />
     <Compile Include="api\reg\registartion.php" />
     <Compile Include="api\user\addGold.php" />
+    <Compile Include="api\user\getEqipItems.php" />
     <Compile Include="api\user\getInfo.php" />
     <Compile Include="api\user\getItems.php" />
     <Compile Include="index.php" />

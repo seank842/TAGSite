@@ -1,4 +1,5 @@
 ﻿function charListShow() {
+    pollPlayerEquipItems(localStorage.getItem('userToken'));
     console.log("CharList Show");
     var postData = { Token: localStorage.getItem('userToken') };
     $.ajax({
@@ -32,6 +33,31 @@
                 loadLogin();
         }
     });
+}
+
+function pollPlayerEquipItems(user) {
+    if (!localStorage.getItem('playerEquipment') || !localStorage.getItem('change') == true) {
+        var postData = { Token: user };
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: '/api/user/getEqipItems.php',
+            data: postData,
+            cache: false,
+            success: function (data) {
+                var results = JSON.parse(data);
+                if (results.success) {
+                    console.log(results);
+                    localStorage.setItem('playerEquipment', JSON.stringify(results));
+                    calcDisplay(JSON.parse(localStorage.getItem('playerEquipment')));
+                } else {
+                    loadLogin();
+                }
+            }
+        });
+    } else {
+        return 0;
+    }
 }
 
 function charCheckClick() {

@@ -24,7 +24,7 @@ function itemListShow() {
 }
 
 function pollPlayerItems() {
-    if (!localStorage.getItem('playerItems')) {
+    if (!localStorage.getItem('playerItems')&&!localStorage.getItem('change')==true) {
         var postData = { Token: localStorage.getItem('userToken') };
         $.ajax({
             async: true,
@@ -36,16 +36,8 @@ function pollPlayerItems() {
                 var results = JSON.parse(data);
                 if (results.success) {
                     console.log(results);
-                    if ($("#charaEquip").length) {
-                        var filtered = results.items.item.filter(function(index){
-                            return index.TypeID !== 5;
-                        });
-                        localStorage.setItem('playerEquipment', JSON.stringify(filtered));
-                        calcDisplay(JSON.parse(localStorage.getItem('playerEquipment')));
-                    } else {
-                        localStorage.setItem('playerItems', JSON.stringify(results));
-                        calcDisplay(JSON.parse(localStorage.getItem('playerItems')));
-                    }
+                    localStorage.setItem('playerItems', JSON.stringify(results));
+                    calcDisplay(JSON.parse(localStorage.getItem('playerItems')));
                 } else {
                     loadLogin();
                 }
