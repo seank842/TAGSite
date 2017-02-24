@@ -9,6 +9,7 @@ function itemListShow() {
             cache: false,
             success: function (data) {
                 var results = JSON.parse(data);
+                console.log(results);
                 if (results.success) {
                     console.log(results);
                     localStorage.setItem('shopData', JSON.stringify(results));
@@ -24,7 +25,9 @@ function itemListShow() {
 }
 
 function pollPlayerItems() {
-    if (!localStorage.getItem('playerItems')&&!localStorage.getItem('change')==true) {
+    var change = localStorage.getItem('changeI');
+    if (!localStorage.getItem('playerItems') || change === "true") {
+        localStorage.setItem('changeI', false);
         var postData = { Token: localStorage.getItem('userToken') };
         $.ajax({
             async: true,

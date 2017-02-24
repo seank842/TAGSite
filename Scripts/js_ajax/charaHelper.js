@@ -36,7 +36,9 @@
 }
 
 function pollPlayerEquipItems(user) {
-    if (!localStorage.getItem('playerEquipment') || !localStorage.getItem('change') == true) {
+    var change = localStorage.getItem('changeE');
+    if (!localStorage.getItem('playerEquipment') ||change === "true") {
+        localStorage.setItem('changeE', false);
         var postData = { Token: user };
         $.ajax({
             async: true,

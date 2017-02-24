@@ -1,12 +1,4 @@
-﻿function getId(elem) {
-    var name = $(elem).html(),
-        data = JSON.parse(localStorage.getItem("shopData")),
-        id = null;
-    $.each(data.items.item, function (i, v) {
-        if (v.ItemName == name) {
-            id = v.ItemID;
-        }
-    });
+﻿function getId(id) {
     buyItem(id);
 }
 
@@ -23,9 +15,11 @@ function buyItem(itemId) {
         processData: true,
         success: function (data) {
             var results = JSON.parse(data);
-            console.log(results);
             if (results.success) {
-                localStorage.setItem('change',true);
+                localStorage.setItem('changeE', true);
+                localStorage.setItem('changeI', true);
+                localStorage.setItem('changeG', true);
+                setGold();
             } else {
                 //send to error handler
             }

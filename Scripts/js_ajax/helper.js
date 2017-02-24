@@ -60,8 +60,10 @@ function setUsername() {
     }
 }
 
-function setGold(){
-if (!localStorage.getItem('gold')) {
+function setGold() {
+    var change = localStorage.getItem('changeG');
+    if (!localStorage.getItem('gold') || change === "true") {
+        localStorage.setItem('changeG', false);
         var postD = { Token: userToken };
         $.ajax({
             async: true,
