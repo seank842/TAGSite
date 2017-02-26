@@ -28,7 +28,7 @@
 </head>
 <body>
     <div class="navbar" style="background-color: white !important; border-radius:0px"> </div>
-    <div id="mBody" class="container">
+    <div id="mBody">
         <!--Content will be dynamically loaded here-->
 
     </div>

@@ -119,7 +119,7 @@
     <Content Include="Resources\image\statLine_sta.svg" />
     <Content Include="Resources\image\statLine_magic.svg" />
     <Content Include="Resources\image\statLine_agil.svg" />
-    <Content Include="Resources\image\temp_image.svg" />
+    <Content Include="Resources\image\TownFull.svg" />
     <Content Include="safari-pinned-tab.svg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

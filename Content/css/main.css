@@ -22,9 +22,9 @@
 *[hidden] {
     display: none;
 }
-body, html, .container-fluid{
-    height:100%;
-    width:100%;
+body, html, .container-fluid {
+    height: 100%;
+    width: 100%;
 }
 
 .mainCon{
@@ -100,4 +100,17 @@ img.charaImage {
     background-position:center;
     background-repeat:no-repeat;
     background-size:78px 78px;
+}
+
+.svgContainer svg{
+    width: 100%;
+}
+
+.navbar {
+    margin: 0 !important;
+}
+
+.outline:hover path {
+    stroke: white;
+    filter: url(#blur-filter);
 }

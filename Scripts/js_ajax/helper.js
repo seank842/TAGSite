@@ -103,7 +103,8 @@ function changeLoc(newLoc){
         case "home":
              newLocPath = "/Resources/html/homeLoads.html";
              barID = "main";
-             flipMain(newLocPath, barID, function () { setUsername(); setGold(); });
+             flipMain(newLocPath, barID, function () { setUsername(); setGold(); loadSVG("Resources/image/TownFull.svg");
+             });
              break;
         case "charaCre":
              newLocPath = "/Resources/html/charaCreLoads.html";
@@ -138,6 +139,17 @@ function changeLoc(newLoc){
         default:
             console.error.log("new localtion not defined: "+newLocPath);
     }
+}
+
+function loadSVG(url) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, false);
+    // Following line is just to be on the safe side;
+    // not needed if your server delivers SVG with correct MIME type
+    xhr.overrideMimeType("image/svg+xml");
+    xhr.send("");
+    document.getElementById("svgContainer")
+        .appendChild(xhr.responseXML.documentElement);
 }
 
 function flipMain(path, barID, callback) {
