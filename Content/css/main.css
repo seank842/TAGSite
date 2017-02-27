@@ -111,6 +111,5 @@ img.charaImage {
 }
 
 .outline:hover path {
-    stroke: white;
-    filter: url(#blur-filter);
+    transform: scale(2, 1.5)
 }
