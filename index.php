@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>The Adventurer's Guild</title>
     <meta charset="utf-8" />
@@ -16,7 +16,7 @@
     <script src="Scripts/jquery-3.1.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/js_ajax/helper.js"></script>
-    <script src="Scripts/jquery-ui.js"></script>
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
     <script src="Scripts/js_ajax/charaCreHelper.js"></script>
     <script src="Scripts/js_ajax/charListHelper.js"></script>
     <script src="Scripts/js_ajax/itemHelper.js"></script>

@@ -102,14 +102,18 @@ img.charaImage {
     background-size:78px 78px;
 }
 
-.svgContainer svg{
+.svgContainer,svg{
     width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .navbar {
     margin: 0 !important;
 }
 
-.outline:hover path {
-    transform: scale(2, 1.5)
+.outline:hover {
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    transform-origin: center;
 }
