@@ -4,9 +4,16 @@
     // Following line is just to be on the safe side;
     // not needed if your server delivers SVG with correct MIME type
     xhr.overrideMimeType("image/svg+xml");
-    xhr.send("");
-    document.getElementById("svgContainer")
-        .appendChild(xhr.responseXML.documentElement);
+    xhr.onload=function(){
+        if(xhr.readyState===xhr.DONE){
+            if (xhr.status===200){
+                console.log(xhr.response);
+      console.log(xhr.responseXML);
+            }
+        }
+    };
+    xhr.send(null);
+    document.getElementById("svgContainer").appendChild(xhr.responseXML.documentElement);
 }
 
 function navigation() {
