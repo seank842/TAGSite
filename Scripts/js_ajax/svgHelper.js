@@ -1,6 +1,6 @@
 ﻿function loadSVG(url) {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", url, false);
+    xhr.open("GET", url, async);
     // Following line is just to be on the safe side;
     // not needed if your server delivers SVG with correct MIME type
     xhr.overrideMimeType("image/svg+xml");
