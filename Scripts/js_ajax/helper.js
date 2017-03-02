@@ -103,7 +103,7 @@ function changeLoc(newLoc){
         case "home":
              newLocPath = "/Resources/html/homeLoads.html";
              barID = "main";
-             flipMain(newLocPath, barID, function () { setUsername(); setGold(); loadSVG("Resources/image/TownFull.svg"); navigation(); });
+             flipMain(newLocPath, barID, function () { setUsername(); setGold(); loadSVG("Resources/image/background/TownFull.svg"); navigation(); });
              break;
         case "charaCre":
              newLocPath = "/Resources/html/charaCreLoads.html";
