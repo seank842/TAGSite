@@ -90,8 +90,7 @@
                         '<br> &nbsp;<i class="glyphicon glyphicon-xbt"></i>: ' +
                         data.items.item[label++].Value
                 });
-        } else if ($("#shop").length) {
-            var element = $("<div></div>").addClass("item")
+        } else if ($("#shop").length) {var element = $("#inven_x5F_slot_x5F_"+(label+1)).append($("<foreignObject></foreignObject>").append($("<div></div>").addClass("item")
                 .attr({
                     id: data.items.item[label].ItemID,
                     'data-toggle': "tooltip",
@@ -107,7 +106,7 @@
                     data.items.item[label].TypeName +
                     '<br> &nbsp;<i class="glyphicon glyphicon-xbt"></i>: ' +
                     data.items.item[label++].Value
-                });
+                })));
         } else {
             var element = $("<div></div>").addClass("item").attr({ id: label, 'data-toggle': "tooltip", title: "" })
                 .css("background",
