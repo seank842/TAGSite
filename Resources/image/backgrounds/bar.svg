@@ -3,24 +3,6 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1122px"
 	 height="783px" viewBox="0 0 1122 783" enable-background="new 0 0 1122 783" xml:space="preserve">
-<symbol  id="Text_x5F_Agi_1_" viewBox="-83.6 -25.9 167.2 51.9">
-	<text transform="matrix(1 0 0 -1 -80.8594 -10.7441)" font-family="'BrushScriptMT'" font-size="45">Agility: ??</text>
-</symbol>
-<symbol  id="Text_x5F_Mag_1_" viewBox="-79 -25.9 158 51.9">
-	<text transform="matrix(1 0 0 -1 -77.0361 -10.7441)" font-family="'BrushScriptMT'" font-size="45">Magic: ??</text>
-</symbol>
-<symbol  id="Text_x5F_Name_1_" viewBox="-43.1 -31 112.9 69.2">
-	<text transform="matrix(1 0 0 -1 -40.0449 -10.7441)" fill="#FF0000" font-family="'BrushScriptMT'" font-size="60">Name</text>
-</symbol>
-<symbol  id="Text_x5F_Sta_1_" viewBox="-94 -25.9 188 51.9">
-	<text transform="matrix(1 0 0 -1 -93.9766 -10.7441)" font-family="'BrushScriptMT'" font-size="45">Stanima: ??</text>
-</symbol>
-<symbol  id="Text_x5F_Str_1_" viewBox="-93.8 -25.9 187.6 51.9">
-	<text transform="matrix(1 0 0 -1 -93.79 -10.7441)" font-family="'BrushScriptMT'" font-size="45">Strength: ??</text>
-</symbol>
-<symbol  id="Text_x5F_XP_1_" viewBox="-52.2 -25.9 104.4 51.9">
-	<text transform="matrix(1 0 0 -1 -52.1953 -10.7441)" font-family="'BrushScriptMT'" font-size="45">XP: 0</text>
-</symbol>
 <g id="Bar">
 	<rect x="0.5" y="426.5" fill="#754C24" stroke="#603813" stroke-miterlimit="10" width="1121" height="357"/>
 	<g>
