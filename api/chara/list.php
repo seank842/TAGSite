@@ -17,7 +17,7 @@ if(missingOperand($operand,$_POST)){
 	} else
 	{
 		
-	$query="SELECT CharacterID,Name,CurrentHealth,MaxHealth,Pet,BuffTokens
+	$query="SELECT CharacterID,Name,CurrentHealth,MaxHealth,Pet,BuffTokens,Type
 	FROM tbl_character WHERE UserID = $userID";
 	$query = mysqli_query($link,$query);
 	

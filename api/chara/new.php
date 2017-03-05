@@ -17,10 +17,12 @@ if(missingOperand($operand,$_POST)){
 		
 	} else
 	{
+		$type=rand(0,3);
+
 		$query="INSERT INTO tbl_character 
-		(Name,UserID,CurrentHealth,MaxHealth)
+		(Name,UserID,CurrentHealth,MaxHealth,Type)
 		VALUES 
-		('$cname',$userID,100,100);";
+		('$cname',$userID,100,100,$type);";
 		$result=mysqli_query($link, $query);
 		
 		$cID=mysqli_insert_id($link);
@@ -68,7 +70,7 @@ if(missingOperand($operand,$_POST)){
 if($success){
 	
 	$stats=array("xp"=>0,"str"=>$strength,"agi"=>$agility,"sta"=>$stamina,"mag"=>$magic);
-	$reultrs = array("success"=>$success,"CharID"=> $cID,"CharName"=>$data['CharName'],"Stats"=>$stats);
+	$reultrs = array("success"=>$success,"CharID"=> $cID,"CharName"=>$data['CharName'],"Type"=>$type,"Stats"=>$stats);
 }else
 {
 	$reultrs = array("success"=>$success, "error_code" => $errorCode);
