@@ -1,31 +1,10 @@
-<style>
-img.charaImage{
-    width:75px;
-    height: auto;
-}
-.stats{
-	height:0px;
-	opacity:0;
-	display:none;
-}
-
-.noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Chrome/Safari/Opera */
-     -khtml-user-select: none; /* Konqueror */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  not supported by any browser */
-}
-</style>
-<div id="shop" class="noselect">
-    <div id="list">
-        <div class="row mainCon" id="svgContainer">
-        </div>
-    <script src="Scrpts/js_ajax/svgHelper.js"></script>
+<div id="shopfull">
+        <div id="shop" class="col-md-8 noselect">
+        <div id="list"></div>
+        <script src="Scrpts/js_ajax/svgHelper.js"></script>
+        <script src="Scripts/js_ajax/itemGrid.js"></script>
     </div>
-    <script src="Scripts/js_ajax/itemGrid.js"></script>
+    <div class="col-md-4" id="svgContainer"></div>
     <script src="Scripts/js_ajax/shopHelper.js"></script>
 </div>
 

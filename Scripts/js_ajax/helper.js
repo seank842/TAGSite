@@ -103,32 +103,32 @@ function changeLoc(newLoc){
         case "home":
              newLocPath = "/Resources/html/homeLoads.html";
              barID = "main";
-             flipMain(newLocPath, barID, function () { setUsername(); setGold(); loadSVG("Resources/image/background/TownFull.svg"); navigation(); });
+             flipMain(newLocPath, barID, function () { setUsername(); setGold(); loadSVG("Resources/image/background/TownFull.svg"); changeBg(""); navigation(); });
              break;
         case "charaCre":
              newLocPath = "/Resources/html/charaCreLoads.html";
              barID = "main";
-             flipMain(newLocPath, barID, function () { setUsername(); setGold(); loadSVG("Resources/image/background/bar.svg");});
+             flipMain(newLocPath, barID, function () { setUsername(); setGold(); });
              break;
         case "charaList":
              newLocPath = "/Resources/html/charaList.html";
              barID = "main";
              flipMain(newLocPath, barID, function () { charListShow(); setUsername(); setGold(); });
              break;
-        case "shop":
+        case "shopfull":
              newLocPath = "/Resources/html/shop.html";
              barID = "main";
-             flipMain(newLocPath, barID, function () { itemListShow(); setUsername(); setGold(); loadSVG("Resources/image/background/shop.svg");});
+             flipMain(newLocPath, barID, function () { itemListShow(); setUsername(); setGold(); changeBg("Resources/image/backgrounds/shop/shop_bg.svg"); changeList("Resources/image/backgrounds/shop/shop_shelf.svg"); loadSVG("Resources/image/background/shop/shop_scroll.svg"); });
              break;
          case "invent":
              newLocPath = "/Resources/html/inventoryList.html";
              barID = "main";
-             flipMain(newLocPath, barID, function () { pollPlayerItems(); setUsername(); setGold(); loadSVG("Resources/image/background/inventory.svg");});
+             flipMain(newLocPath, barID, function () { pollPlayerItems(); setUsername(); setGold(); });
              break;
          case "charaEquip":
              newLocPath = "/Resources/html/charaEquip.html";
              barID = "main";
-             flipMain(newLocPath, barID, function () { charListShow(); setUsername(); setGold(); loadSVG("Resources/image/background/armory.svg");});
+             flipMain(newLocPath, barID, function () { charListShow(); setUsername(); setGold(); });
              break;
          case "charaStats":
              newLocPath = "/Rseources/html/charaStats.html";
@@ -172,7 +172,7 @@ function showCre() {
 }
 
 function showShop() {
-    changeLoc("shop");
+    changeLoc("shopfull");
 }
 
 function showList() {
@@ -235,4 +235,13 @@ function getCharStats(char){
                 console.log("error getting stats");
         }
     });
+}
+
+function changeBg(url) {
+    $(document.body).css('background-image', 'url(' + url + ')');
+
+}
+function changeList(url) {
+    $("#list").css('background-image', 'url(' + url + ')');
+
 }

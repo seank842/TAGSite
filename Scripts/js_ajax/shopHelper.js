@@ -1,5 +1,6 @@
 ﻿function getId(id) {
-    buyItem(id);
+    displayItemText(id);
+    shopBuy();
 }
 
 function buyItem(itemId) {
@@ -24,5 +25,26 @@ function buyItem(itemId) {
                 //send to error handler
             }
         }
+    });
+}
+
+function displayItemText(id) {
+    var data = JSON.parse(localStorage.getItem('shopData'));
+    $.each(data.items.item, function (i, v) {
+        if (v.ItemID == id) {
+            $("#NameText").text(v.ItemName);
+            $("#TypeText").text("Type: "+v.TypeName);
+            $("#SlotText").text("Slot: " + v.SlotName);
+            $("#ValText").text("Value: " + v.Value);
+            $("#Button").attr("class", id);
+            return 0;
+        }
+    });
+}
+
+function shopBuy() {
+    $("#Button").click(function () {
+        var id = this.className;
+        buyItem(id.baseVal);
     });
 }

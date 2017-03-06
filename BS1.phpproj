@@ -70,6 +70,8 @@
     <Folder Include="Resources\" />
     <Folder Include="Resources\html\" />
     <Folder Include="Resources\image\" />
+    <Folder Include="Resources\image\backgrounds\" />
+    <Folder Include="Resources\image\backgrounds\shop\" />
     <Folder Include="Resources\image\items\" />
     <Folder Include="Scripts\" />
     <Folder Include="Scripts\js_ajax\" />
@@ -108,6 +110,15 @@
     <Content Include="Resources\html\navBar.html" />
     <Content Include="Resources\html\shop.html" />
     <Content Include="Resources\image\armor_stand.jpg" />
+    <Content Include="Resources\image\backgrounds\armory.svg" />
+    <Content Include="Resources\image\backgrounds\bar.svg" />
+    <Content Include="Resources\image\backgrounds\inventory.svg" />
+    <Content Include="Resources\image\backgrounds\shop.svg" />
+    <Content Include="Resources\image\backgrounds\shop\shop_bg.svg" />
+    <Content Include="Resources\image\backgrounds\shop\shop_scroll.svg" />
+    <Content Include="Resources\image\backgrounds\shop\shop_shelf.svg" />
+    <Content Include="Resources\image\backgrounds\TownFull%28low%29.svg" />
+    <Content Include="Resources\image\backgrounds\TownFull.svg" />
     <Content Include="Resources\image\charTemp.jpg" />
     <Content Include="Resources\image\items\bow.png" />
     <Content Include="Resources\image\items\chest.jpg" />
@@ -119,7 +130,6 @@
     <Content Include="Resources\image\statLine_sta.svg" />
     <Content Include="Resources\image\statLine_magic.svg" />
     <Content Include="Resources\image\statLine_agil.svg" />
-    <Content Include="Resources\image\TownFull.svg" />
     <Content Include="safari-pinned-tab.svg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

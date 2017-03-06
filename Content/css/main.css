@@ -1,4 +1,6 @@
-﻿.container-fluid {
+﻿@import url(https://fonts.googleapis.com/css?family=Great+Vibes:400);
+
+.container-fluid {
     padding:0;
 }
 
@@ -22,8 +24,8 @@
 *[hidden] {
     display: none;
 }
-body, html, .container-fluid {
-    height: 100%;
+body, html, .container-fluid, #mBody, #shopfull{
+    height: 100% !important;
     width: 100%;
 }
 
@@ -36,13 +38,17 @@ body, html, .container-fluid {
 }
 
 #list {
-    background-color: rgba(0, 0, 0, 0.2);
-    width: 250px;
-    width: 90%;
-    width: 0;
+    background: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     position: relative;
     display: block;
     margin-top: 50px;
+    width:100%!important;
+    height:0!important;
+    padding-bottom:100%!important;
 }
 
 .item {
@@ -51,6 +57,7 @@ body, html, .container-fluid {
     color: aqua;
     padding: 5px;
     font-weight: bold;
+    cursor:pointer;
 }
 
 .layout {
@@ -116,4 +123,21 @@ img.charaImage {
     transform: scale(1.05);
     -webkit-transform: scale(1.05);
     transform-origin: center;
+    cursor:pointer;
+}
+
+body {
+    background: no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#shop{
+    height:100%;
+}
+
+#Button{
+    cursor:pointer;
 }

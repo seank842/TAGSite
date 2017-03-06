@@ -1,7 +1,7 @@
 ﻿function loadItemGrid(numItems, data) {
-    var rowSize = 100,
-        colSize = 100,
-        spacerSize = 15,
+    var rowSize = 115,
+        colSize = 115,
+        spacerSize = 25,
         fixedSize = true,
         oneColumn = false,
         threshold = "50%",
@@ -90,14 +90,8 @@
                         '<br> &nbsp;<i class="glyphicon glyphicon-xbt"></i>: ' +
                         data.items.item[label++].Value
                 });
-                //need to look into adding patterns for each and then change fill on path of svg
-        } else if ($("#shop").length) {var element = $("#inven_x5F_slot_x5F_"+(label+1)).add("<image></image>").addClass("item")
-                .attr({
-                    id: data.items.item[label].ItemID,
-                    'data-toggle': "tooltip",
-                    title: "",
-                    onclick: "getId(this.id)"
-                }).css("background",
+        } else if ($("#shop").length) {
+            var element = $("<div></div>").addClass("item").attr({id: data.items.item[label].ItemID,'data-toggle': "tooltip",title: "",onclick: "getId(this.id)"}).css("background",
                 "yellowgreen url(Resources/image/items/" + data.items.item[label].ImageURL + ") right no-repeat")
                 .css("background-size", "contain").html(data.items.item[label].ItemName)
                 .tooltip({
@@ -107,7 +101,7 @@
                     data.items.item[label].TypeName +
                     '<br> &nbsp;<i class="glyphicon glyphicon-xbt"></i>: ' +
                     data.items.item[label++].Value
-                }));
+                });
         } else {
             var element = $("<div></div>").addClass("item").attr({ id: label, 'data-toggle': "tooltip", title: "" })
                 .css("background",
