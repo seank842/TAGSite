@@ -11,7 +11,7 @@ if(missingOperand($operand,$_POST)){
 	$cID=$data['CharID'];
 	$userID = auth($token,$link);
 	
-	$query="SELECT CharacterID,Name,CurrentHealth,MaxHealth,Pet,BuffTokens
+	$query="SELECT CharacterID,Name,CurrentHealth,MaxHealth,Pet,BuffTokens,Type
 	FROM tbl_character WHERE CharacterID = $cID";
 	
 	$query = mysqli_query($link,$query);
