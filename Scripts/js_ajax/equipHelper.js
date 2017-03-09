@@ -5,13 +5,6 @@ function getId(id) {
 }
 
 function setSlots() {
-    var offSetY = 40, offSetX = 40;
-    var aYStand = $("#armorStand").height(), aXStand = $("#armorStand").width(), hYPos = 40 - offSetY, hXPos = (aXStand / 2) - offSetX, cYPos = 160 - offSetY, cXPos = (aXStand / 2) - offSetX,
-        lYPos = ((aYStand / 3) * 2) - offSetY, lXPos = (aXStand / 2) - offSetX, handYPos = ((aYStand / 3) * 2) - 20 - offSetY, handXPos = (aXStand / 2) + 85 - offSetX;
-    $("#head").css({ top: hYPos, left: hXPos });
-    $("#chest").css({ top: cYPos, left: cXPos });
-    $("#legs").css({ top: lYPos, left: lXPos });
-    $("#hand").css({ top: handYPos, left: handXPos });
     var postD = { CharID: charid };
     $.ajax({
         async: true,
