@@ -1,0 +1,17 @@
+﻿<div id="charaEquip">
+    <div id="items" hidden>
+        <div id="list">
+        </div>
+        <div id="armorStand" style="background-image:url(Resources/image/armor_stand.jpg); background-position:center;background-repeat:no-repeat; height:600px;width:100%; position:relative;">
+            <div class="armorSlot" id="head"></div>
+            <div class="armorSlot" id="chest"></div>
+            <div class="armorSlot" id="legs"></div>
+            <div class="armorSlot" id="hand"></div>
+        </div>
+    </div>
+    <div id="charaList" class="noselect"></div>
+    <script src="Scripts/js_ajax/charaHelper.js"></script>
+    <script src="Scripts/js_ajax/equipHelper.js"></script>
+    <script src="Scripts/js_ajax/itemGrid.js"></script>
+    <script src="Scripts/js_ajax/itemHelper.js"></script>
+</div>

@@ -108,7 +108,7 @@ function changeLoc(newLoc){
         case "charaCre":
              newLocPath = "/Resources/html/charaCreLoads.html";
              barID = "main";
-             flipMain(newLocPath, barID, function () { setUsername(); setGold(); });
+             flipMain(newLocPath, barID, function () { setUsername(); setGold(); loadSVG("Resources/image/background/Bar.svg"); });
              break;
         case "charaList":
              newLocPath = "/Resources/html/charaList.html";
@@ -128,7 +128,7 @@ function changeLoc(newLoc){
          case "charaEquip":
              newLocPath = "/Resources/html/charaEquip.html";
              barID = "main";
-             flipMain(newLocPath, barID, function () { charListShow(); setUsername(); setGold(); });
+             flipMain(newLocPath, barID, function () { charListShow(); setUsername(); setGold(); loadSVG("Resources/image/background/armory/armory_rack.svg");});
              break;
          case "charaStats":
              newLocPath = "/Rseources/html/charaStats.html";

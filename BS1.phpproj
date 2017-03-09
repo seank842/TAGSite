@@ -71,6 +71,7 @@
     <Folder Include="Resources\html\" />
     <Folder Include="Resources\image\" />
     <Folder Include="Resources\image\backgrounds\" />
+    <Folder Include="Resources\image\backgrounds\armory\" />
     <Folder Include="Resources\image\backgrounds\shop\" />
     <Folder Include="Resources\image\items\" />
     <Folder Include="Scripts\" />
@@ -101,6 +102,7 @@
     <Content Include="mstile-150x150.png" />
     <Content Include="packages.config" />
     <Content Include="Resources\html\charaCreLoads.html" />
+    <Content Include="Resources\html\charaEquip.html.old" />
     <Content Include="Resources\html\charaEquip.html" />
     <Content Include="Resources\html\charaList.html" />
     <Content Include="Resources\html\charaStats.html" />
@@ -110,8 +112,8 @@
     <Content Include="Resources\html\navBar.html" />
     <Content Include="Resources\html\shop.html" />
     <Content Include="Resources\image\armor_stand.jpg" />
-    <Content Include="Resources\image\backgrounds\armory.svg" />
-    <Content Include="Resources\image\backgrounds\bar.svg" />
+    <Content Include="Resources\image\backgrounds\armory\armory_rack.svg" />
+    <Content Include="Resources\image\backgrounds\armory\armory_bg.svg" />
     <Content Include="Resources\image\backgrounds\inventory.svg" />
     <Content Include="Resources\image\backgrounds\shop.svg" />
     <Content Include="Resources\image\backgrounds\shop\shop_bg.svg" />
@@ -119,6 +121,7 @@
     <Content Include="Resources\image\backgrounds\shop\shop_shelf.svg" />
     <Content Include="Resources\image\backgrounds\TownFull%28low%29.svg" />
     <Content Include="Resources\image\backgrounds\TownFull.svg" />
+    <Content Include="Resources\image\backgrounds\Bar.svg" />
     <Content Include="Resources\image\charTemp.jpg" />
     <Content Include="Resources\image\items\bow.png" />
     <Content Include="Resources\image\items\chest.jpg" />

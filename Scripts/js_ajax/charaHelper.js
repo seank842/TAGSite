@@ -74,7 +74,8 @@ function charCheckClick() {
 function charCheckClickA() {
     $('.chara').on("click", function () {
         charid = $(this).data('charid');
-        $("#items").removeAttr("hidden");
+        changeBg("Resources/image/backgrounds/armory/armory_bg.svg");
+        $("#fullArm").removeAttr("hidden");
         $("#charaList").hide();
         pollPlayerItems();
         setSlots();

@@ -24,9 +24,9 @@
 *[hidden] {
     display: none;
 }
-body, html, .container-fluid, #mBody, #shopfull{
+body, html, .container-fluid, #mBody, #shopfull, #charaEquip {
     height: 100% !important;
-    width: 100%;
+    width: 100% !important;
 }
 
 .mainCon{
@@ -47,8 +47,6 @@ body, html, .container-fluid, #mBody, #shopfull{
     display: block;
     margin-top: 50px;
     width:100%!important;
-    height:0!important;
-    padding-bottom:100%!important;
 }
 
 .item {
@@ -115,6 +113,7 @@ img.charaImage {
     overflow: hidden;
 }
 
+
 .navbar {
     margin: 0 !important;
 }
@@ -140,4 +139,34 @@ body {
 
 #Button{
     cursor:pointer;
+}
+
+.chars {
+    filter: url(#colorMeLTA);
+    -webkit-filter: url(#colorMeLTA);
+    -mos-filter: url(#colorMeLTA);
+    transition: filter 2s;
+    -webkit-transition: filter 2s;
+    -moz-transition: filter 2s;
+}
+
+.cActive{
+    filter: none;
+    cursor: pointer;
+    transition: filter 2s;
+    -webkit-transition: filter 2s;
+    -moz-transition: filter 2s;
+}
+
+#Text_x5F_Name {
+    background-color: rgba(0,0,0,0);
+    color: red;
+    border: none;
+    font-size: xx-large;
+    text-align:center;
+}
+
+#fullArm{
+    height:auto !important;
+    width:100% !important;
 }
