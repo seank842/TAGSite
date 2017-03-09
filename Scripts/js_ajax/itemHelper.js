@@ -15,8 +15,11 @@ function itemListShow() {
                     localStorage.setItem('shopData', JSON.stringify(results));
                     calcDisplay(JSON.parse(localStorage.getItem('shopData')));
                 }
-                else
-                    loadLogin();
+                else {
+                    toastr['error']("Item loading", "Please log back in and try again!")
+                    localStorage.clear();
+                    changeLoc("account");
+                }
             }
         });
     } else {
@@ -42,7 +45,9 @@ function pollPlayerItems() {
                     localStorage.setItem('playerItems', JSON.stringify(results));
                     calcDisplay(JSON.parse(localStorage.getItem('playerItems')));
                 } else {
-                    loadLogin();
+                    toastr['error']("Player Item loading", "Please log back in and try again!")
+                    localStorage.clear();
+                    changeLoc("account");
                 }
             }
         });
@@ -56,7 +61,7 @@ function calcDisplay(data) {
     if (!numItems < 1) {
         loadItemGrid(numItems, data);
     } else {
-        console.log("It's lonely here...")
+        toastr['warning']("Items Empty", "It's Lonely in here :(")
     }
 }
 

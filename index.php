@@ -13,6 +13,7 @@
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/css/main.css" rel="stylesheet" />
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="Content/toastr.css" rel="stylesheet" type="text/css" />
     <script src="Scripts/jquery-3.1.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/js_ajax/helper.js"></script>
@@ -20,6 +21,7 @@
     <script src="Scripts/js_ajax/charaCreHelper.js"></script>
     <script src="Scripts/js_ajax/charListHelper.js"></script>
     <script src="Scripts/js_ajax/itemHelper.js"></script>
+    <script src="Scripts/toastr.js"></script>
     <!--Load in gsap base-->
     <script src="https://selene.hud.ac.uk/js/gsap/TweenMax.min.js"></script>
     <!--Load in Content specific gsap plugins/utils-->

@@ -1,6 +1,5 @@
 ﻿function charListShow() {
     pollPlayerEquipItems(localStorage.getItem('userToken'));
-    console.log("CharList Show");
     var postData = { Token: localStorage.getItem('userToken') };
     $.ajax({
         async: true,
@@ -11,7 +10,6 @@
         processData: true,
         success: function (data) {
             var results = JSON.parse(data);
-            console.log(data);
             if (results.success) {
                 $.each(results.char.char, function (index, value) {
                     if (value.Pet == 0)
@@ -29,8 +27,11 @@
                     charCheckClickA();
                 }
             }
-            else
-                loadLogin();
+            else {
+                toastr['error']("Character loading", "Please log back in and try again!")
+                localStorage.clear();
+                changeLoc("account");
+            }
         }
     });
 }

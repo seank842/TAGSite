@@ -94,8 +94,9 @@ function onSubmit(reg) {
 }
 
 function errorMessageDsp(error){
- 	$("#error").html("<span style='color:#cc0000'>Error:</span> "+error+". ");	
-	$('#loginForm').effect( "shake" );
+    $("#error").html("<span style='color:#cc0000'>Error:</span> "+error+". ");	
+    $('#loginForm').effect("shake");
+    toastr['error']("Register/Login", error)
 }
 
 function errorHandeler(errorCode, reg){

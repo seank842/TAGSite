@@ -15,7 +15,6 @@ function setSlots() {
         processData: true,
         success: function (data) {
             var results = JSON.parse(data);
-            console.log(results);
             if (results.success) {
                 equipedId=results;
                 $.each(results.items.item, function (index) {
@@ -60,9 +59,9 @@ function equipItem(itemId) {
         processData: true,
         success: function (data) {
             var results = JSON.parse(data);
-            console.log(results);
             if (results.success) {
-                console.log("item equiped");
+                setSlots();
+                toastr["success"]("Item Equip", "Your new item has been equiped!")
             } else {
                 errorReporting(results.error_code, itemId);
             }
@@ -73,36 +72,47 @@ function equipItem(itemId) {
 function errorReporting(eCode, itemId) {
     switch (eCode) {
         case 3:
-            console.log("This Item is already equiped.");
+            toastr["error"]("Item Equip","This Item is already equiped!")
             break;
         case 4:
-            console.log("This item cannot be equiped because you are too newbie.");
+            toastr["error"]("Item Equip", "You are not worthy enough to use this item!")
             break;
         case 5:
-            console.log("There is an item already equiped in that slot will replace.");
+            toastr["warning"]("Item Equip", "There is already an item in this slot, it will be replaced!")
             deEquip(itemId);
+            break;
     }
 }
 
 function deEquip(itemId) {
-    $.each(equipedId.items.item, function (index) {
-        if (equipedId.items.item[index].OwnershipID == itemId) {
-            var postD = { Token: localStorage.getItem('userToken'), EquipID: equipedId.items.item[index].EquipID };
-            $.ajax({
-                async: true,
-                type: "POST",
-                url: "api/item/deEquip.php",
-                data: postD,
-                cache: false,
-                processData: true,
-                success: function (data) {
-                    var results = JSON.parse(data);
-                    console.log(results);
-                    if (results.success) {
-                        equipItem(itemId);
-                    } else {
-                        console.log("Was unable to deequip item");
-                    }
+    $.each(JSON.parse(localStorage.getItem('playerEquipment')).items.item, function (i, val) {
+        if (val.OwnershipID == itemId) {
+            var testCase = val.SlotID;
+            $.each(equipedId.items.item, function (index, v) {
+                if (v.SlotID == testCase) {
+                    var postD = { Token: localStorage.getItem('userToken'), EquipID: v.EquipID };
+                    $.ajax({
+                        async: true,
+                        type: "POST",
+                        url: "api/item/deEquip.php",
+                        data: postD,
+                        cache: false,
+                        processData: true,
+                        success: function (data) {
+                            var results = JSON.parse(data);
+                            console.log(results);
+                            if (results.success) {
+                                toastr["success"]("Item Equip", "Item has been Successfully unequiped!")
+                                equipItem(itemId);
+                                return 0;
+                            } else {
+                                toastr["error"]("Item Equip", "Was unable to unequip item please contact support!")
+                            }
+                        }
+                    });
+                } else {
+                    toastr["error"]("Item Equip", "Catastrophic error, contact support")
+                    console.log(v);
                 }
             });
         }

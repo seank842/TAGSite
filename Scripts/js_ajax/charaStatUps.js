@@ -21,7 +21,9 @@ function checkBuff() {
                 }
                 showStats();
             } else {
-                //send to error handler
+                toastr['error']("Character Stats", "Please log back in and try again!")
+                localStorage.clear();
+                changeLoc("account");
             }
         }
     });

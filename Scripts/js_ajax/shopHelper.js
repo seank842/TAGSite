@@ -22,7 +22,13 @@ function buyItem(itemId) {
                 localStorage.setItem('changeG', true);
                 setGold();
             } else {
-                //send to error handler
+                if (results.error_code === 2)
+                    toastr['error']("Shop Buy", "Not Enough Money!")
+                else {
+                    toastr['error']("Shop Buy", "Please log back in and try again!")
+                    localStorage.clear();
+                    changeLoc("account");
+                }
             }
         }
     });

@@ -91,6 +91,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\css\main.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.less" />
+    <Content Include="Content\toastr.min.css" />
+    <Content Include="Content\toastr.scss" />
     <Content Include="favicon-16x16.png" />
     <Content Include="favicon-32x32.png" />
     <Content Include="favicon.ico" />
@@ -155,5 +159,7 @@
     <Content Include="Scripts\js_ajax\itemHelper.js" />
     <Content Include="Scripts\js_ajax\shopHelper.js" />
     <Content Include="Scripts\js_ajax\svgHelper.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
   </ItemGroup>
 </Project>

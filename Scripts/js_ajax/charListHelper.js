@@ -22,10 +22,13 @@ function charListShow() {
                         ".jpg'>Name:" + value.Name + "	Health:" + value.CurrentHealth + "/" + value.MaxHealth
                         + "<div class='charChara'></div></div>");
                 });
-               charCheckClick();
+                charCheckClick();
             }
-            else
-                loadLogin();
+            else {
+                toastr['error']("Character loading", "Please log back in and try again!")
+                localStorage.clear();
+                changeLoc("account");
+            }
         }
     });
 }
