@@ -12,15 +12,19 @@ function charListShow() {
             var results = JSON.parse(data);
 			console.log(data);
             if (results.success) {
+				var place=0;
                 $.each(results.char.char, function (index, value) {
                     if (value.Pet == 0)
                         image = "charTemp";
                     else
-                        image = "petTemp"
-
-                    $("#charaList").append("<div class='chara'  data-charid='" + value.CharacterID + "'><img class='charaImage' align='middle' src='/Resources/image/" + image +
+                        image = "petTemp";
+                    $("#charaL"+place).append("<div class='chara'  data-charid='" + value.CharacterID + "'><img class='charaImage' align='middle' src='/Resources/image/Charas" + value.Type +
                         ".jpg'>Name:" + value.Name + "	Health:" + value.CurrentHealth + "/" + value.MaxHealth
                         + "<div class='charChara'></div></div>");
+						place++;
+						if(place==4){
+							place=0;
+						}
                 });
                 charCheckClick();
             }

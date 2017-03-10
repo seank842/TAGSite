@@ -41,7 +41,7 @@ function setSlots() {
                     }
                 });
             } else {
-                //send to error handler
+                toastr["error"]("Item Slot Loading", "Catastrophic error, contact support")
             }
         }
     });
@@ -110,9 +110,6 @@ function deEquip(itemId) {
                             }
                         }
                     });
-                } else {
-                    toastr["error"]("Item Equip", "Catastrophic error, contact support")
-                    console.log(v);
                 }
             });
         }

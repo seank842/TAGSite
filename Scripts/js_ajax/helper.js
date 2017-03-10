@@ -172,7 +172,7 @@ function showCre() {
 }
 
 function showShop() {
-    changeLoc("shopfull");
+    $.when(killDrags).then(changeLoc("shopfull"));
 }
 
 function showList() {
@@ -180,11 +180,11 @@ function showList() {
 }
 
 function showInvent() {
-    changeLoc("invent");
+    $.when(killDrags).then(changeLoc("invent"));
 }
 
 function showCharaEquip() {
-    changeLoc("charaEquip");
+    $.when(killDrags).then(changeLoc("charaEquip"));
 }
 
 function showCharaStats() {
@@ -203,6 +203,11 @@ function logout() {
     localStorage.clear();
     console.log("logged out");
     changeLoc("account");
+}
+
+function killDrags(){
+    Draggable.get("#list").kill();
+    return;
 }
 
 history.pushState(null, null, document.URL);

@@ -119,10 +119,22 @@ img.charaImage {
     margin: 0 !important;
 }
 
+.outline{
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2 ease-in-out;
+    -webkit-transition: all .2 ease-in-out;
+    -o-transition: all .2 ease-in-out;
+}
+
 .outline:hover {
     transform: scale(1.05);
-    -webkit-transform: scale(1.05);
     transform-origin: center;
+    -webkit-transform: scale(1.05);
+    -webkit-transform-origin: center;
+    -moz-transform: scale(1.05);
+    -moz-transform-origin: center;
+    -o-transform: scale(1.05);
+    -o-transform-origin: center;
     cursor:pointer;
 }
 
@@ -170,4 +182,9 @@ body {
 #fullArm{
     height:auto !important;
     width:100% !important;
+}
+
+.chara{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 15px;
 }
