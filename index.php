@@ -17,10 +17,10 @@
     <script src="Scripts/jquery-3.1.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/toastr.js"></script>
+    <script src="Scripts/js_ajax/charaHelper.js"></script>
     <script src="Scripts/js_ajax/helper.js"></script>
     <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
     <script src="Scripts/js_ajax/charaCreHelper.js"></script>
-    <script src="Scripts/js_ajax/charListHelper.js"></script>
     <script src="Scripts/js_ajax/itemHelper.js"></script>
     <!--Load in gsap base-->
     <script src="https://selene.hud.ac.uk/js/gsap/TweenMax.min.js"></script>

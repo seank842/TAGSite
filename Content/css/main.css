@@ -75,11 +75,6 @@ label:hover{
     cursor:pointer;
 }
 
-img.charaImage {
-    width: 75px;
-    height: auto;
-}
-
 .stats {
     height: 0px;
     opacity: 0;
@@ -121,9 +116,9 @@ img.charaImage {
 
 .outline{
     transition: all .2s ease-in-out;
-    -moz-transition: all .2 ease-in-out;
-    -webkit-transition: all .2 ease-in-out;
-    -o-transition: all .2 ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
 }
 
 .outline:hover {
@@ -184,7 +179,44 @@ body {
     width:100% !important;
 }
 
-.chara{
+.chara, .charaC {
+    background-color: saddlebrown;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    word-break: break-all;
+    -ms-word-break: break-all;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
     margin-bottom: 15px;
+    height: 79.95px;
+}
+
+.chara:hover {
+    cursor:pointer;
+}
+
+.chara p, .charaC p {
+    display: block;
+    margin: 10px;
+    width: 85%;
+}
+
+.charaC .add{
+    display: block;
+    float: right;
+    width: 10%;
+    margin-left: auto;
+    cursor:pointer;
+}
+
+.chara img, .charaC img {
+    float: right;
+    width: auto;
+    height: 75.95px;
+}
+
+.saveBut {
+    width: 50%;
+    margin: 0 auto;
 }

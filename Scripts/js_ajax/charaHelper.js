@@ -1,4 +1,4 @@
-﻿function charListShow() {
+﻿function charaListShow() {
     pollPlayerEquipItems(localStorage.getItem('userToken'));
     var postData = { Token: localStorage.getItem('userToken') };
     $.ajax({
@@ -17,11 +17,10 @@
                         image = "charTemp";
                     else
                         image = "petTemp";
-                    $("#charaL"+place).append("<div class='chara'  data-charid='" + value.CharacterID + "'><img class='charaImage' align='middle' src='/Resources/image/Charas" + value.Type +
-                        ".jpg'><p>Name:" + value.Name + "</p><p>Health:" + value.CurrentHealth + "/" + value.MaxHealth+"</p>"
-                        + "<div class='charChara'></div></div>");
+                    $("#charaL" + place).append("<div class='chara'  data-charid='" + value.CharacterID + "'><img class='charaImage' align='middle' src='Resources/image/Charas/" + value.Type +
+                        ".png'><p id='" + value.CharacterID +"'>Name:" + value.Name + " <br> Health:" + value.CurrentHealth + "/" + value.MaxHealth + "</p>");
 						place++;
-						if(place==4){
+						if(place==6){
 							place=0;
 						}
                 });
@@ -69,10 +68,16 @@ function pollPlayerEquipItems(user) {
 
 function charCheckClick() {
     $('.chara').on("click", function () {
-        charid = $(this).data('charid');
-        $("#stats").removeAttr("hidden");
-        $("#charaList").hide();
-        checkBuff();
+        var charid = $(this).data('charid');
+        checkBuff(charid);
+        $(this).animate({ height: "225px" });
+        $("#" + charid).append("<br><br><br>" +
+            "Strength: <span id='" + stre + "' class='stre'>" + stre + "</span><span class='add' onclick='addStat(" + $(this) + ",stre)'><i class='fa fa-plus' aria-hidden='true'></i></span><br>" +
+            "Agility: <span id='" + agil + "' class='agil'>" + agil + "</span><span class='add' onclick='addStat(" + $(this) + ",agil)'><i class='fa fa-plus' aria-hidden='true'></i></span><br>" +
+            "Stamina: <span id='" + sta + "' class='sta'>" + sta + "</span><span class='add' onclick='addStat(" + $(this) + ",sta)'><i class='fa fa-plus' aria-hidden='true'></i></span><br>" +
+            "Magic: <span id='" + magic + "' class='magic'>" + magic + "</span><span class='add' onclick='addStat(" + $(this) + ",magic)'><i class='fa fa-plus' aria-hidden='true'></i></span>");
+        $(this).removeClass('chara');
+        $(this).addClass('charaC');
     });
 }
 

@@ -110,11 +110,6 @@ function changeLoc(newLoc){
              barID = "main";
              flipMain(newLocPath, barID, function () { setUsername(); setGold(); loadSVG("Resources/image/background/Bar.svg"); });
              break;
-        case "charaList":
-             newLocPath = "/Resources/html/charaList.html";
-             barID = "main";
-             flipMain(newLocPath, barID, function () { charListShow(); setUsername(); setGold(); });
-             break;
         case "shopfull":
              newLocPath = "/Resources/html/shop.html";
              barID = "main";
@@ -128,12 +123,12 @@ function changeLoc(newLoc){
          case "charaEquip":
              newLocPath = "/Resources/html/charaEquip.html";
              barID = "main";
-             flipMain(newLocPath, barID, function () { charListShow(); setUsername(); setGold(); loadSVG("Resources/image/background/armory/armory_rack.svg");});
+             flipMain(newLocPath, barID, function () { charaListShow(); setUsername(); setGold(); loadSVG("Resources/image/background/armory/armory_rack.svg");});
              break;
          case "charaStats":
-             newLocPath = "/Rseources/html/charaStats.html";
+             newLocPath = "/Resources/html/charaStats.html";
              barID = "main";
-             flipMain(newLocPath, barID, function () { charListShow(); setUsername(); setGold(); });
+             flipMain(newLocPath, barID, function () { charaListShow(); setUsername(); setGold(); });
              break;
         default:
             console.error.log("new localtion not defined: "+newLocPath);

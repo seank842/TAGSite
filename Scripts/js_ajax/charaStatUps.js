@@ -1,6 +1,6 @@
-﻿var charid = null, buffRight = null, buffNum = null, stats = null, stre = null, agil = null, sta = null, magic=null;
+﻿var charid = null, stre = null, agil = null, sta = null, magic = null;
 
-function checkBuff() {
+function checkBuff(charid) {
     postD = { CharID: charid };
     $.ajax({
         async: true,
@@ -14,14 +14,14 @@ function checkBuff() {
             console.log(results);
             if (results.success) {
                 if (results.Char.BuffTokens < 1) {
-                    buffRight = false;
+                    toastr['warning']( "This character can not be buffed! stats will display", "Character Stats")
+                    getStats(postD);
                 } else {
-                    buffRight = true;
-                    buffNum = results.Char.BuffTokens;
+                    toastr['info']("You have " + results.Char.BuffTokens + " Buff Tokens to spend on this character", "Character Buffing")
+                    getStats(postD);
                 }
-                showStats();
             } else {
-                toastr['error']("Character Stats", "Please log back in and try again!")
+                toastr['error']( "Please log back in and try again!", "Character Stats")
                 localStorage.clear();
                 changeLoc("account");
             }
@@ -32,7 +32,7 @@ function showStats() {
     $.when(getStats()).then(loadStats());
 }
 
-function getStats() {
+function getStats(postD) {
     $.ajax({
         async: true,
         type: "POST",
@@ -44,126 +44,114 @@ function getStats() {
             var results = JSON.parse(data);
             console.log(results);
             if (results.success) {
-                stats = results;
+                loadStats(results);
             } else {
-                //send to error handler
+                toastr["error"]("Catastrophic error, contact support", "Character get stats")
+                return false;
             }
         }
     });
-    return 0;
 }
 
-function loadStats() {
-    $(function () {
-        $.when(
-            $.get("Resources/image/statLine_stre.svg", function (svg) {
-                $("#stre_cont").append(svg.documentElement);
-            }),
-            $.get("Resources/image/statLine_agil.svg", function (svg) {
-                $("#agil_cont").append(svg.documentElement);
-            }),
-            $.get("Resources/image/statLine_sta.svg", function (svg) {
-                $("#sta_cont").append(svg.documentElement);
-            }),
-            $.get("Resources/image/statLine_magic.svg", function (svg) {
-                $("#magic_cont").append(svg.documentElement);
-            })
-        ).then(init);
-
-        function init() {
-            $.each(stats.Starts.stat, function (index) {
-                switch (index) {
-                    case 0:
-                        break;
-                    case 1:
-                        break;
-                    case 2:
-                        TweenLite.to("#stre", 1, { scale: 1, transformOrigin: "50% Left" });
-                        break;
-                    case 3:
-                        TweenLite.to("#agil", 1, { scale: 1, transformOrigin: "50% Left" });
-                        break;
-                    case 4:
-                        TweenLite.to("#sta", 1, { scale: 1, transformOrigin: "50% Left" });
-                        break;
-                    case 5:
-                        TweenLite.to("#magic", 1, { scale: 1, transformOrigin: "50% Left" });
-                        break;
-                    default:
-                        console.log("didn't enter");
-                        break;
-                }
-                
-            });
-            return 0;
+function loadStats(stats) {
+    $.each(stats.Starts.stat, function (index, v) {
+        console.log(v);
+        switch (index) {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                stre = v.Value;
+                break;
+            case 3:
+                agil = v.Value;
+                break;
+            case 4:
+                sta = v.Value;
+                break;
+            case 5:
+                magic = v.Value;
+                break;
+            default:
+                toastr["error"]("Catastrophic error, contact support", "Character load stats")
+                break;
         }
     });
 }
 
-function addStat(element) {
-    id = element.id;
-    switch (id) {
+function addStat(tempid, stat) {
+    switch (stat) {
         case "stre":
-            stre++;
-            console.log(stre);
+            var stre = $(tempid).find("." + stat).attr('id');
+            if (!uploadStat(stre, 2)) {
+                toastr['error']("There was a problem uploading the change please try again.", "Stat Buffing");
+            } else {
+                stre++
+                var element = $(tempid).find("." + stat);
+                element.attr('id', stre);
+                element.html(stre);
+            }
             break;
         case "agil":
-            agil++;
-            console.log(agil);
+            var agil = $(tempid).find("." + stat).attr('id');
+            if (!uploadStat(agil, 3)) {
+                toastr['error']("There was a problem uploading the change please try again.", "Stat Buffing");
+            } else {
+                agil++;
+                var element = $(tempid).find("." + stat);
+                element.attr('id', agil);
+                element.html(agil);
+            }
             break;
         case "sta":
-            sta++;
-            console.log(sta);
+            var sta = $(tempid).find("." + stat).attr('id');
+            if (!uploadStat(sta, 4)) {
+                toastr['error']("There was a problem uploading the change please try again.", "Stat Buffing");
+            } else {
+                sta++;
+                var element = $(tempid).find("." + stat);
+                element.attr('id', sta);
+                element.html(sta);
+            }
             break;
         case "magic":
-            magic++;
-            console.log(magic);
+            var magic = $(tempid).find("." + stat).attr('id');
+            if (!uploadStat(magic, 5)) {
+                toastr['error']("There was a problem uploading the change please try again.", "Stat Buffing");
+            } else {
+                magic++;
+                var element = $(tempid).find("." + stat);
+                element.attr('id', magic);
+                element.html(magic);
+            }
             break;
         default:
             console.log("error");
     }
 }
 
-function lowerStat(element) {
-    id = element.id;
-    switch (id) {
-        case "stre":
-            if (stre === null) {
-                console.log("can't remove points");
+function uploadStat(charid, statid) {
+    postUD = { CharID: charid, StatID: statid, Token: localStorage.getItem('userToken') };
+    $.ajax({
+        async: true,
+        type: "POST",
+        url: "api/chara/buff.php",
+        data: postD,
+        cache: false,
+        processData: true,
+        success: function (data) {
+            var results = JSON.parse(data);
+            if (results.success) {
+                return true;
             } else {
-                stre--;
+                return false;
             }
-            console.log(stre);
-            break;
-        case "agil":
-            if (agil === null) {
-                console.log("can't remove points");
-            } else {
-                agil--;
-            }
-            console.log(agil);
-            break;
-        case "sta":
-            if (sta === null) {
-                console.log("can't remove points");
-            } else {
-                sta--;
-            }
-            console.log(sta);
-            break;
-        case "magic":
-            if (magic === null) {
-                console.log("can't remove points");
-            } else {
-                magic--;
-            }
-            console.log(magic);
-            break;
-        default:
-            console.log("error");
-    }
+        }
+    });
 }
 
+/*
 function save() {
     if (stre === null && agil === null && sta === null && magic == null) {
         console.log("nothing to save!");
@@ -199,4 +187,4 @@ function save() {
             }
         });
     }
-}
+}*/

@@ -74,6 +74,7 @@
     <Folder Include="Resources\image\backgrounds\armory\" />
     <Folder Include="Resources\image\backgrounds\shop\" />
     <Folder Include="Resources\image\items\" />
+    <Folder Include="Resources\image\Charas\" />
     <Folder Include="Scripts\" />
     <Folder Include="Scripts\js_ajax\" />
   </ItemGroup>
@@ -106,10 +107,9 @@
     <Content Include="mstile-150x150.png" />
     <Content Include="packages.config" />
     <Content Include="Resources\html\charaCreLoads.html" />
-    <Content Include="Resources\html\charaEquip.html.old" />
     <Content Include="Resources\html\charaEquip.html" />
-    <Content Include="Resources\html\charaList.html" />
     <Content Include="Resources\html\charaStats.html" />
+    <Content Include="Resources\html\charaStats.html.old" />
     <Content Include="Resources\html\homeLoads.html" />
     <Content Include="Resources\html\inventoryList.html" />
     <Content Include="Resources\html\loads.html" />
@@ -126,6 +126,10 @@
     <Content Include="Resources\image\backgrounds\TownFull%28low%29.svg" />
     <Content Include="Resources\image\backgrounds\TownFull.svg" />
     <Content Include="Resources\image\backgrounds\Bar.svg" />
+    <Content Include="Resources\image\Charas\3.png" />
+    <Content Include="Resources\image\Charas\1.png" />
+    <Content Include="Resources\image\Charas\2.png" />
+    <Content Include="Resources\image\Charas\0.png" />
     <Content Include="Resources\image\charTemp.jpg" />
     <Content Include="Resources\image\items\bow.png" />
     <Content Include="Resources\image\items\chest.jpg" />
@@ -150,7 +154,6 @@
     <Content Include="Scripts\js_ajax\charaCreHelper.js" />
     <Content Include="Scripts\js_ajax\charaHelper.js" />
     <Content Include="Scripts\js_ajax\charaStatUps.js" />
-    <Content Include="Scripts\js_ajax\charListHelper.js" />
     <Content Include="Scripts\js_ajax\equipHelper.js" />
     <Content Include="Scripts\js_ajax\helper.js" />
     <Content Include="Scripts\js_ajax\itemGrid.js" />
