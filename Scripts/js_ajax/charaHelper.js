@@ -78,13 +78,13 @@ function charCheckClick() {
 }
 function setCard(tempDiv) {
     var charid = tempDiv.data('charid');
-    console.log("test");
     tempDiv.animate({ height: "200px" });
-    $("#stats_" + charid).append(
-        "Strength: <span id='" + stre + "' class='stre'>" + stre + "</span><span class='add' onclick='addStat($(this),\"str\")'><i class='fa fa-plus' aria-hidden='true'></i></span><br>" +
-        "Agility: <span id='" + agil + "' class='agil'>" + agil + "</span><span class='add' onclick='addStat($(this),\"agi\")'><i class='fa fa-plus' aria-hidden='true'></i></span><br>" +
-        "Stamina: <span id='" + sta + "' class='sta'>" + sta + "</span><span class='add' onclick='addStat($(this),\"stam\")'><i class='fa fa-plus' aria-hidden='true'></i></span><br>" +
-        "Magic: <span id='" + magic + "' class='magic'>" + magic + "</span><span class='add' onclick='addStat($(this),\"magi\")'><i class='fa fa-plus' aria-hidden='true'></i></span>");
+    var pTag = $("#stats_" + charid);
+    pTag.append(
+        "Strength: <span id='" + stre + "' class='stre'>" + stre + "</span><span class='add' onclick='addStat(\"str\"," + charid + ")'><i class='fa fa-plus' aria-hidden='true'></i></span><br>" +
+        "Agility: <span id='" + agil + "' class='agil'>" + agil + "</span><span class='add' onclick='addStat(\"agi\"," + charid + ")'><i class='fa fa-plus' aria-hidden='true'></i></span><br>" +
+        "Stamina: <span id='" + sta + "' class='sta'>" + sta + "</span><span class='add' onclick='addStat(\"stam\"," + charid + ")'><i class='fa fa-plus' aria-hidden='true'></i></span><br>" +
+        "Magic: <span id='" + magic + "' class='magic'>" + magic + "</span><span class='add' onclick='addStat(\"magi\"," + charid + ")'><i class='fa fa-plus' aria-hidden='true'></i></span>");
     tempDiv.removeClass('chara');
     tempDiv.addClass('charaC');
 }
