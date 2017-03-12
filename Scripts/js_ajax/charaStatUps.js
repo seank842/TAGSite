@@ -1,6 +1,6 @@
 ﻿var charid = null, stre = null, agil = null, sta = null, magic = null;
 
-function checkBuff(charid) {
+function checkBuff(charid, tempDiv) {
     postD = { CharID: charid };
     $.ajax({
         async: true,
@@ -15,10 +15,12 @@ function checkBuff(charid) {
             if (results.success) {
                 if (results.Char.BuffTokens < 1) {
                     toastr['warning']( "This character can not be buffed! stats will display", "Character Stats")
-                    getStats(postD);
+                    getStats(postD, tempDiv);
+                    return true;
                 } else {
                     toastr['info']("You have " + results.Char.BuffTokens + " Buff Tokens to spend on this character", "Character Buffing")
-                    getStats(postD);
+                    getStats(postD, tempDiv);
+                    return true;
                 }
             } else {
                 toastr['error']( "Please log back in and try again!", "Character Stats")
@@ -28,11 +30,8 @@ function checkBuff(charid) {
         }
     });
 }
-function showStats() {
-    $.when(getStats()).then(loadStats());
-}
 
-function getStats(postD) {
+function getStats(postD, tempDiv) {
     $.ajax({
         async: true,
         type: "POST",
@@ -44,7 +43,7 @@ function getStats(postD) {
             var results = JSON.parse(data);
             console.log(results);
             if (results.success) {
-                loadStats(results);
+                loadStats(results, tempDiv);
             } else {
                 toastr["error"]("Catastrophic error, contact support", "Character get stats")
                 return false;
@@ -53,7 +52,7 @@ function getStats(postD) {
     });
 }
 
-function loadStats(stats) {
+function loadStats(stats, tempDiv) {
     $.each(stats.Starts.stat, function (index, v) {
         console.log(v);
         switch (index) {
@@ -78,11 +77,15 @@ function loadStats(stats) {
                 break;
         }
     });
+    setCard(tempDiv);
 }
 
 function addStat(tempid, stat) {
+    console.log("entered");
+    console.log(stat);
+    console.log(tempid);
     switch (stat) {
-        case "stre":
+        case "str":
             var stre = $(tempid).find("." + stat).attr('id');
             if (!uploadStat(stre, 2)) {
                 toastr['error']("There was a problem uploading the change please try again.", "Stat Buffing");
@@ -93,7 +96,7 @@ function addStat(tempid, stat) {
                 element.html(stre);
             }
             break;
-        case "agil":
+        case "agi":
             var agil = $(tempid).find("." + stat).attr('id');
             if (!uploadStat(agil, 3)) {
                 toastr['error']("There was a problem uploading the change please try again.", "Stat Buffing");
@@ -104,7 +107,7 @@ function addStat(tempid, stat) {
                 element.html(agil);
             }
             break;
-        case "sta":
+        case "stam":
             var sta = $(tempid).find("." + stat).attr('id');
             if (!uploadStat(sta, 4)) {
                 toastr['error']("There was a problem uploading the change please try again.", "Stat Buffing");
@@ -115,7 +118,7 @@ function addStat(tempid, stat) {
                 element.html(sta);
             }
             break;
-        case "magic":
+        case "magi":
             var magic = $(tempid).find("." + stat).attr('id');
             if (!uploadStat(magic, 5)) {
                 toastr['error']("There was a problem uploading the change please try again.", "Stat Buffing");
@@ -143,9 +146,9 @@ function uploadStat(charid, statid) {
         success: function (data) {
             var results = JSON.parse(data);
             if (results.success) {
-                return true;
+                toastr['success']("Buff applied!", "Buffing")
             } else {
-                return false;
+                toastr['error']("Unable to apply buff!", "Buffing error")
             }
         }
     });

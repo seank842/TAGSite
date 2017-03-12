@@ -13,14 +13,14 @@
             if (results.success) {
                 var place=0;
                 $.each(results.char.char, function (index, value) {
-                    if (value.Pet == 0)
+                    if (value.Pet === 0)
                         image = "charTemp";
                     else
                         image = "petTemp";
                     $("#charaL" + place).append("<div class='chara'  data-charid='" + value.CharacterID + "'><img class='charaImage' align='middle' src='Resources/image/Charas/" + value.Type +
-                        ".png'><p id='" + value.CharacterID +"'>Name:" + value.Name + " <br> Health:" + value.CurrentHealth + "/" + value.MaxHealth + "</p>");
+                        ".png'><p id='" + value.CharacterID + "'>Name:" + value.Name + " <br> Health:" + value.CurrentHealth + "/" + value.MaxHealth + "<br><br><br></p><p id='stats_"+ value.CharacterID + "'></p>");
 						place++;
-						if(place==6){
+						if(place===6){
 							place=0;
 						}
                 });
@@ -69,16 +69,24 @@ function pollPlayerEquipItems(user) {
 function charCheckClick() {
     $('.chara').on("click", function () {
         var charid = $(this).data('charid');
-        checkBuff(charid);
-        $(this).animate({ height: "225px" });
-        $("#" + charid).append("<br><br><br>" +
-            "Strength: <span id='" + stre + "' class='stre'>" + stre + "</span><span class='add' onclick='addStat(" + $(this) + ",stre)'><i class='fa fa-plus' aria-hidden='true'></i></span><br>" +
-            "Agility: <span id='" + agil + "' class='agil'>" + agil + "</span><span class='add' onclick='addStat(" + $(this) + ",agil)'><i class='fa fa-plus' aria-hidden='true'></i></span><br>" +
-            "Stamina: <span id='" + sta + "' class='sta'>" + sta + "</span><span class='add' onclick='addStat(" + $(this) + ",sta)'><i class='fa fa-plus' aria-hidden='true'></i></span><br>" +
-            "Magic: <span id='" + magic + "' class='magic'>" + magic + "</span><span class='add' onclick='addStat(" + $(this) + ",magic)'><i class='fa fa-plus' aria-hidden='true'></i></span>");
-        $(this).removeClass('chara');
-        $(this).addClass('charaC');
+        if (!$("#stats_" + charid).is(":empty")) {
+
+        } else {
+            checkBuff(charid, $(this));
+        }
     });
+}
+function setCard(tempDiv) {
+    var charid = tempDiv.data('charid');
+    console.log("test");
+    tempDiv.animate({ height: "200px" });
+    $("#stats_" + charid).append(
+        "Strength: <span id='" + stre + "' class='stre'>" + stre + "</span><span class='add' onclick='addStat($(this),\"str\")'><i class='fa fa-plus' aria-hidden='true'></i></span><br>" +
+        "Agility: <span id='" + agil + "' class='agil'>" + agil + "</span><span class='add' onclick='addStat($(this),\"agi\")'><i class='fa fa-plus' aria-hidden='true'></i></span><br>" +
+        "Stamina: <span id='" + sta + "' class='sta'>" + sta + "</span><span class='add' onclick='addStat($(this),\"stam\")'><i class='fa fa-plus' aria-hidden='true'></i></span><br>" +
+        "Magic: <span id='" + magic + "' class='magic'>" + magic + "</span><span class='add' onclick='addStat($(this),\"magi\")'><i class='fa fa-plus' aria-hidden='true'></i></span>");
+    tempDiv.removeClass('chara');
+    tempDiv.addClass('charaC');
 }
 
 function charCheckClickA() {
