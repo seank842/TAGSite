@@ -118,7 +118,7 @@ function changeLoc(newLoc){
          case "invent":
              newLocPath = "/Resources/html/inventoryList.html";
              barID = "main";
-             flipMain(newLocPath, barID, function () { pollPlayerItems(); setUsername(); setGold(); });
+             flipMain(newLocPath, barID, function () { pollPlayerItems(); setUsername(); setGold(); loadSVG("Resources/image/background/shop/shop_scroll.svg"); });
              break;
          case "charaEquip":
              newLocPath = "/Resources/html/charaEquip.html";
