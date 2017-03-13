@@ -72,6 +72,7 @@
     <Folder Include="Resources\image\" />
     <Folder Include="Resources\image\backgrounds\" />
     <Folder Include="Resources\image\backgrounds\armory\" />
+    <Folder Include="Resources\image\backgrounds\invent\" />
     <Folder Include="Resources\image\backgrounds\shop\" />
     <Folder Include="Resources\image\items\" />
     <Folder Include="Resources\image\Charas\" />
@@ -119,6 +120,7 @@
     <Content Include="Resources\image\backgrounds\armory\armory_rack.svg" />
     <Content Include="Resources\image\backgrounds\armory\armory_bg.svg" />
     <Content Include="Resources\image\backgrounds\inventory.svg" />
+    <Content Include="Resources\image\backgrounds\invent\invent_scroll.svg" />
     <Content Include="Resources\image\backgrounds\shop.svg" />
     <Content Include="Resources\image\backgrounds\shop\shop_bg.svg" />
     <Content Include="Resources\image\backgrounds\shop\shop_scroll.svg" />

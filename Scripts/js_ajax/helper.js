@@ -118,12 +118,12 @@ function changeLoc(newLoc){
          case "invent":
              newLocPath = "/Resources/html/inventoryList.html";
              barID = "main";
-             flipMain(newLocPath, barID, function () { pollPlayerItems(); setUsername(); setGold(); loadSVG("Resources/image/background/shop/shop_scroll.svg"); });
+             flipMain(newLocPath, barID, function () { pollPlayerItems(); setUsername(); setGold(); loadSVG("Resources/image/background/invent/invent_scroll.svg"); });
              break;
          case "charaEquip":
              newLocPath = "/Resources/html/charaEquip.html";
              barID = "main";
-             flipMain(newLocPath, barID, function () { charaListShow(); setUsername(); setGold(); loadSVG("Resources/image/background/armory/armory_rack.svg");});
+             flipMain(newLocPath, barID, function () { charaListShow(); setUsername(); setGold(); loadSVG("Resources/image/background/armory/armory_rack.svg"); });
              break;
          case "charaStats":
              newLocPath = "/Resources/html/charaStats.html";

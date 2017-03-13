@@ -13,18 +13,19 @@
     right: 0;
 }
 
-    .Absolute-Center.is-Responsive {
-        width: 50%;
-        height: 50%;
-        min-width: 325px;
-        max-width: 400px;
-        padding: 40px;
-    }
+.Absolute-Center.is-Responsive {
+    width: 50%;
+    height: 50%;
+    min-width: 325px;
+    max-width: 400px;
+    padding: 40px;
+}
 
 *[hidden] {
     display: none;
 }
-body, html, .container-fluid, #mBody, #shopfull, #charaEquip {
+
+body, html, .container-fluid, #mBody, #shopfull, #charaEquip, #inventory {
     height: 100% !important;
     width: 100% !important;
 }
