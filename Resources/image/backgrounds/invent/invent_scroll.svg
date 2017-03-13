@@ -641,7 +641,10 @@
 	</g>
 </g>
 <text transform="matrix(1.2223 0 0 1 40 112)" fill="#FF0000" font-family="'BrushScriptMT'" font-size="40" id="NameText">Name</text>
-<text transform="matrix(1.2223 0 0 1 15 195)" font-family="'BrushScriptMT'" font-size="54.45" id="TypeText">Type: ???????</text>
-<text transform="matrix(1.2223 0 0 1 30 290)" font-family="'BrushScriptMT'" font-size="54.45" id="SlotText">Slot: ???????</text>
-<text transform="matrix(1.2223 0 0 1 55 385)" font-family="'BrushScriptMT'" font-size="54.45" id="ValText">Value: ??????</text>
+<text transform="matrix(1.2223 0 0 1 15 175)" font-family="'BrushScriptMT'" font-size="50" id="TypeText">Type: ???????</text>
+<text transform="matrix(1.2223 0 0 1 20 230)" font-family="'BrushScriptMT'" font-size="50" id="SlotText">Slot: ???????</text>
+<text transform="matrix(1.2223 0 0 1 23 280)" font-family="'BrushScriptMT'" font-size="50" id="StatsText">Stats</text>
+<text transform="matrix(1.2223 0 0 1 26 330)" font-family="'BrushScriptMT'" font-size="35" id="Text0"></text>
+<text transform="matrix(1.2223 0 0 1 29 380)" font-family="'BrushScriptMT'" font-size="35" id="Text1"></text>
+<text transform="matrix(1.2223 0 0 1 32 430)" font-family="'BrushScriptMT'" font-size="35" id="Text2"></text>
 </svg>

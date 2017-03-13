@@ -113,7 +113,7 @@ function changeLoc(newLoc){
         case "shopfull":
              newLocPath = "/Resources/html/shop.html";
              barID = "main";
-             flipMain(newLocPath, barID, function () { itemListShow(); setUsername(); setGold(); changeBg("Resources/image/backgrounds/shop/shop_bg.svg"); changeList("Resources/image/backgrounds/shop/shop_shelf.svg"); loadSVG("Resources/image/background/shop/shop_scroll.svg"); });
+             flipMain(newLocPath, barID, function () { itemListShow(); setUsername(); setGold(); changeBg("Resources/image/backgrounds/shop/shop_bg.svg"); loadSVG("Resources/image/background/shop/shop_scroll.svg"); });
              break;
          case "invent":
              newLocPath = "/Resources/html/inventoryList.html";
@@ -262,4 +262,28 @@ toastr.options = {
     "hideEasing": "linear",
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"
+}
+
+function showADl() {
+    var retVal = confirm("Do you want to Download the Android game?");
+    if (retVal == true) {
+        window.location = 'https://drive.google.com/file/d/0B8Mo80EWaCAbVGlISWxaZlZyRm8/view?usp=sharing';
+        return true;
+    }
+    else {
+
+        return false;
+    }
+}
+
+function showDDl() {
+    var retVal = confirm("Do you want to Download the Desktop game?");
+    if (retVal == true) {
+        window.location = 'Resources/downloads/TAG-v-ALPHA-2.jar';
+        return true;
+    }
+    else {
+        
+        return false;
+    }
 }

@@ -57,6 +57,8 @@ body, html, .container-fluid, #mBody, #shopfull, #charaEquip, #inventory {
     padding: 5px;
     font-weight: bold;
     cursor:pointer;
+    border: thick;
+    border-color:burlywood;
 }
 
 .layout {
