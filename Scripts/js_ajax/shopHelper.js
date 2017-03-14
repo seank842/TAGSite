@@ -1,7 +1,11 @@
 ﻿function getId(id) {
     displayItemText(id);
-    shopBuy();
+   
 }
+
+$(document).ready(function(){
+ shopBuy();
+});
 
 function buyItem(itemId) {
     
@@ -78,6 +82,9 @@ function getStats(itemID) {
 }
 
 function shopBuy() {
-    var id = this.className;
-    buyItem(id.baseVal);
+    $("#Button").click(function(){
+        var id = this.className;
+        buyItem(id.baseVal);
+    })
+   
 }
