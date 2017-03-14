@@ -78,8 +78,6 @@ function getStats(itemID) {
 }
 
 function shopBuy() {
-    $("#Button").click(function () {
-        var id = this.className;
-        buyItem(id.baseVal);
-    });
+    var id = this.className;
+    buyItem(id.baseVal);
 }
