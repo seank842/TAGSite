@@ -72,9 +72,11 @@
     <Folder Include="Resources\image\" />
     <Folder Include="Resources\image\backgrounds\" />
     <Folder Include="Resources\image\backgrounds\armory\" />
+    <Folder Include="Resources\image\backgrounds\invent\" />
     <Folder Include="Resources\image\backgrounds\shop\" />
     <Folder Include="Resources\image\items\" />
     <Folder Include="Resources\image\Charas\" />
+    <Folder Include="Resources\downloads\" />
     <Folder Include="Scripts\" />
     <Folder Include="Scripts\js_ajax\" />
   </ItemGroup>
@@ -106,6 +108,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="mstile-150x150.png" />
     <Content Include="packages.config" />
+    <Content Include="Resources\downloads\TAG-v-ALPHA-2.jar" />
     <Content Include="Resources\html\charaCreLoads.html" />
     <Content Include="Resources\html\charaEquip.html" />
     <Content Include="Resources\html\charaStats.html" />
@@ -119,6 +122,7 @@
     <Content Include="Resources\image\backgrounds\armory\armory_rack.svg" />
     <Content Include="Resources\image\backgrounds\armory\armory_bg.svg" />
     <Content Include="Resources\image\backgrounds\inventory.svg" />
+    <Content Include="Resources\image\backgrounds\invent\invent_scroll.svg" />
     <Content Include="Resources\image\backgrounds\shop.svg" />
     <Content Include="Resources\image\backgrounds\shop\shop_bg.svg" />
     <Content Include="Resources\image\backgrounds\shop\shop_scroll.svg" />
@@ -160,6 +164,7 @@
     <Content Include="Scripts\js_ajax\charaStatUps.js" />
     <Content Include="Scripts\js_ajax\equipHelper.js" />
     <Content Include="Scripts\js_ajax\helper.js" />
+    <Content Include="Scripts\js_ajax\intventHelper.js" />
     <Content Include="Scripts\js_ajax\itemGrid.js" />
     <Content Include="Scripts\js_ajax\loginHelper.js" />
     <Content Include="Scripts\js_ajax\onSubmit.js" />

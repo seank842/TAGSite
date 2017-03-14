@@ -81,6 +81,7 @@ function setCard(tempDiv) {
     tempDiv.animate({ height: "200px" });
     var pTag = $("#stats_" + charid);
     pTag.append(
+        "XP: <span id='" + xp + "'>" + xp + "</span><br>"+
         "Strength: <span id='" + stre + "' class='stre'>" + stre + "</span><span class='add' onclick='addStat(\"str\"," + charid + ")'><i class='fa fa-plus' aria-hidden='true'></i></span><br>" +
         "Agility: <span id='" + agil + "' class='agil'>" + agil + "</span><span class='add' onclick='addStat(\"agi\"," + charid + ")'><i class='fa fa-plus' aria-hidden='true'></i></span><br>" +
         "Stamina: <span id='" + sta + "' class='sta'>" + sta + "</span><span class='add' onclick='addStat(\"stam\"," + charid + ")'><i class='fa fa-plus' aria-hidden='true'></i></span><br>" +

@@ -7,8 +7,6 @@
     xhr.onload=function(){
         if(xhr.readyState===xhr.DONE){
             if (xhr.status===200){
-                console.log(xhr.response);
-                console.log(xhr.responseXML);
             }
         }
     };
@@ -35,9 +33,13 @@ function navigation() {
             showCre();
             break;
         case "GuildHall":
+            showDDl();
             break;
         case "BlackMarket":
             showInvent();
+            break;
+        case "MessageBoard":
+            showADl();
             break;
         }
     });

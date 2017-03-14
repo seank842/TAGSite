@@ -1,4 +1,4 @@
-﻿var charid = null, stre = null, agil = null, sta = null, magic = null;
+﻿var charid = null, stre = null, agil = null, sta = null, magic = null, xp = null;
 
 function checkBuff(charid, tempDiv) {
     postD = { CharID: charid };
@@ -59,6 +59,7 @@ function loadStats(stats, tempDiv) {
             case 0:
                 break;
             case 1:
+                xp = v.Value;
                 break;
             case 2:
                 stre = v.Value;

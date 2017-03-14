@@ -80,7 +80,7 @@
                     title: "",
                     onclick: "getId(this.id)"
                 }).css("background",
-                    "yellowgreen url(Resources/image/items/" + data.items.item[label].ImageURL + ") right no-repeat")
+                    "url(Resources/image/items/" + data.items.item[label].ImageURL + ") right no-repeat")
                 .css("background-size", "contain").html(data.items.item[label].ItemName)
                 .tooltip({
                     html: true,
@@ -91,8 +91,8 @@
                         data.items.item[label++].Value
                 });
         } else if ($("#shop").length) {
-            var element = $("<div></div>").addClass("item").attr({id: data.items.item[label].ItemID,'data-toggle': "tooltip",title: "",onclick: "getId(this.id)"}).css("background",
-                "yellowgreen url(Resources/image/items/" + data.items.item[label].ImageURL + ") right no-repeat")
+            var element = $("<div></div>").addClass("item").attr({id: data.items.item[label].ItemID, 'data-toggle': "tooltip",title: "",onclick: "getId(this.id)"}).css("background",
+                "url(Resources/image/items/" + data.items.item[label].ImageURL + ") right no-repeat")
                 .css("background-size", "contain").html(data.items.item[label].ItemName)
                 .tooltip({
                     html: true,
@@ -103,9 +103,9 @@
                     data.items.item[label++].Value
                 });
         } else {
-            var element = $("<div></div>").addClass("item").attr({ id: label, 'data-toggle': "tooltip", title: "" })
+            var element = $("<div></div>").addClass("item").attr({ id: data.items.item[label].ItemID, 'data-toggle': "tooltip", title: "", ondblclick: "getId(this.id)" })
                 .css("background",
-                    "yellowgreen url(Resources/image/items/" + data.items.item[label].ImageURL + ") right no-repeat")
+                    "url(Resources/image/items/" + data.items.item[label].ImageURL + ") right no-repeat")
                 .css("background-size", "contain").html(data.items.item[label].ItemName)
                 .tooltip({
                     html: true,
