@@ -108,6 +108,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="mstile-150x150.png" />
     <Content Include="packages.config" />
+    <Content Include="Resources\downloads\TAG_rel_v_1.0.jar" />
     <Content Include="Resources\downloads\TAG-v-ALPHA-2.jar" />
     <Content Include="Resources\html\charaCreLoads.html" />
     <Content Include="Resources\html\charaEquip.html" />

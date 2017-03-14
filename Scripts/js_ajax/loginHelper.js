@@ -32,7 +32,7 @@ function preSubmit(){
     if ($("#newUser").prop('checked')) {
         reg=true;
         if ($("#tac").prop('checked')) {
-            if (isValidEmailAddress($("input[name = nameGoesHere]").val())) {
+            if (isValidEmailAddress($("input[name = Email]").val())) {
                 $.ajax({
                     async: true,
                     type: "POST",

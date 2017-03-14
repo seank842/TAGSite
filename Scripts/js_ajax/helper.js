@@ -279,7 +279,7 @@ function showADl() {
 function showDDl() {
     var retVal = confirm("Do you want to Download the Desktop game?");
     if (retVal == true) {
-        window.location = 'Resources/downloads/TAG-v-ALPHA-2.jar';
+        window.location = 'Resources/downloads/TAG_rel_v_1.0.jar';
         return true;
     }
     else {
