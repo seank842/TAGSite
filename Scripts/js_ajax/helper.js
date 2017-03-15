@@ -98,7 +98,7 @@ function changeLoc(newLoc){
         case "account":
              newLocPath = "/Resources/html/loads.html #account";
              barID = "preLogin";
-             flipMain(newLocPath, barID, function () { $("#mBody").append("<script src='https://www.google.com/recaptcha/api.js'></script>"); });
+             flipMain(newLocPath, barID, function () { $("#mBody").append("<script src='https://www.google.com/recaptcha/api.js'></script>"); changeBg(""); });
              break;
         case "home":
              newLocPath = "/Resources/html/homeLoads.html";
