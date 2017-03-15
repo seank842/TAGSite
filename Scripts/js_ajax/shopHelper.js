@@ -1,7 +1,11 @@
 ﻿function getId(id) {
     displayItemText(id);
-    shopBuy();
+   
 }
+
+$(document).ready(function(){
+ shopBuy();
+});
 
 function buyItem(itemId) {
     
@@ -21,6 +25,7 @@ function buyItem(itemId) {
                 localStorage.setItem('changeI', true);
                 localStorage.setItem('changeG', true);
                 setGold();
+                toastr['success']("Item has been Purchased!", "Shop Buy")
             } else {
                 if (results.error_code === 2)
                     toastr['error']("Shop Buy", "Not Enough Money!")
@@ -45,6 +50,7 @@ function displayItemText(id) {
             $("#TypeText").text("Type: "+v.TypeName);
             $("#SlotText").text("Slot: " + v.SlotName);
             $("#ValText").text("Value: " + v.Value);
+            $("#Button").attr("class", "");
             $("#Button").attr("class", id);
             getStats(id);
             return 0;
@@ -76,8 +82,9 @@ function getStats(itemID) {
 }
 
 function shopBuy() {
-    $("#Button").click(function () {
+    $("#Button").click(function(){
         var id = this.className;
         buyItem(id.baseVal);
-    });
+    })
+   
 }

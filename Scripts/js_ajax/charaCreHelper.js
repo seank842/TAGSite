@@ -26,7 +26,7 @@
                         break;
                     case 1:
                         type = "Mage";
-                        $("#MAge").removeClass("chars");
+                        $("#Mage").removeClass("chars");
                         break;
                     case 2:
                         type = "Necromancer";
