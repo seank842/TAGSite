@@ -32,11 +32,11 @@ if($success){
 			array(
 			"0"=> "$cID",
         	"1"=> "0",
-        	"2"=> "Level Value",
+        	"2"=> "Level",
         	"3"=> (string)getLevel($line['Value']),
         	"CharacterID"=> "$cID",
         	"CharacteristicID"=> "0",
-        	"Name"=> "Level Value",
+        	"Name"=> "Level",
         	"Value"=> (string)getLevel($line['Value'])));
 		}
     	array_push($results ["stat"], $line);
