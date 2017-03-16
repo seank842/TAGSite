@@ -26,8 +26,8 @@
 }
 
 body, html, .container-fluid, #mBody, #shopfull, #charaEquip, #inventory {
-    height: 100% !important;
     width: 100% !important;
+    height: 100% !important;
 }
 
 .mainCon{
@@ -108,7 +108,7 @@ label:hover{
 
 .svgContainer,svg{
     width: 100%;
-    height: 100%;
+    height: 100vh;
     overflow: hidden;
 }
 

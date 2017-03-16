@@ -2381,7 +2381,7 @@
 	</g>
 	<g id="Text_x5F_ChaCre">
 		<text id="Text_x5F_Type" transform="matrix(1.2223 0 0 1 683 430)" font-size="40">Type: ??</text>
-		<text id="Text_x5F_Sta" transform="matrix(1.2223 0 0 1 678 375)" font-size="40">Stanima: ??</text>
+		<text id="Text_x5F_Sta" transform="matrix(1.2223 0 0 1 678 375)" font-size="40">Stamina: ??</text>
 		<text id="Text_x5F_Mag" transform="matrix(1.2223 0 0 1 675 325)" font-size="40">Magic: ??</text>
 		<text id="Text_x5F_Agi" transform="matrix(1.2223 0 0 1 673 270)" font-size="40">Agility: ??</text>
 		<text id="Text_x5F_Str" transform="matrix(1.2223 0 0 1 669 215)" font-size="40">Strength: ??</text>
